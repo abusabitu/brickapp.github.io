@@ -75,6 +75,34 @@
   footer .cols{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
   footer p{margin:6px 0;color:#444}
 
+  
+@media (max-width: 880px) { /* Adjust breakpoint as needed, 880px is what you currently have for .phone adjustments */
+  .mockups {
+    justify-content: flex-start; /* Align items to the start for scrolling */
+    flex-wrap: nowrap; /* Prevent wrapping, force horizontal layout */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding-bottom: 10px; /* Add some padding for scrollbar visibility */
+  }
+
+  .phone {
+    width: 160px; /* Smaller fixed width for mobile mockups */
+    height: 330px; /* Proportionally smaller height */
+    max-width: none; /* Override max-width set for larger screens */
+    border: 8px solid #111; /* Thinner border for smaller size */
+    flex-shrink: 0; /* Ensure phones don't shrink smaller than their width */
+    margin: 0 5px; /* Add some margin between phones */
+  }
+
+  /* Optional: Adjust hero section for smaller text/padding if desired */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 0.95rem;
+  }
+}
+  
   /* small */
   @media(max-width:880px){
     .phone{width:200px;height:480px}
