@@ -75,42 +75,43 @@
   footer .cols{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
   footer p{margin:6px 0;color:#444}
 
-  
-@media (max-width: 880px) { /* Adjust breakpoint as needed, 880px is what you currently have for .phone adjustments */
+@media (max-width: 880px) {
+  /* Mockups for horizontal scrolling on mobile */
   .mockups {
-    justify-content: flex-start; /* Align items to the start for scrolling */
-    flex-wrap: nowrap; /* Prevent wrapping, force horizontal layout */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    padding-bottom: 10px; /* Add some padding for scrollbar visibility */
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+    gap: 12px; /* From your second block */
   }
 
+  /* Phone sizing for horizontal scrolling */
   .phone {
-    width: 160px; /* Smaller fixed width for mobile mockups */
-    height: 330px; /* Proportionally smaller height */
-    max-width: none; /* Override max-width set for larger screens */
-    border: 8px solid #111; /* Thinner border for smaller size */
-    flex-shrink: 0; /* Ensure phones don't shrink smaller than their width */
-    margin: 0 5px; /* Add some margin between phones */
+    width: 160px; /* From your first block */
+    height: 330px; /* From your first block */
+    max-width: none;
+    border: 8px solid #111;
+    flex-shrink: 0;
+    margin: 0 5px;
   }
 
-  /* Optional: Adjust hero section for smaller text/padding if desired */
+  /* Hero section text adjustments */
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 1.8rem; /* From your first block */
   }
+
   .hero p {
     font-size: 0.95rem;
   }
-}
-  
-  /* small */
-  @media(max-width:880px){
-    .phone{width:200px;height:480px}
-    .hero h1{font-size:1.9rem}
-    .mockups{gap:12px}
-    .download-bar{left:12px;right:12px;bottom:12px}
-  }
 
+  /* Download bar position */
+  .download-bar {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
   /* New CSS for offers carousel */
   .offers-carousel-container {
       overflow: hidden;
