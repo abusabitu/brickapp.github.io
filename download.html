@@ -1,84 +1,95 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Brick — Download Android APK</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Brick Android APK Download</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    *{box-sizing:border-box}body{margin:0;font-family:'Inter',sans-serif;line-height:1.5;color:#222;background:#fafafa}
-    a{text-decoration:none;color:inherit}
-    header{padding:20px;text-align:center;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.05)}
-    main{max-width:1100px;margin:0 auto;padding:40px 20px}
-    h1{font-size:2rem;margin:0 0 10px}
-    h2{font-size:1.5rem;margin:40px 0 20px}
-    p{margin:0 0 15px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;background:#34a853;color:#fff;font-weight:600;border-radius:8px;transition:.2s}
-    .btn img{height:20px;margin-right:8px}
-    .btn:hover{background:#2c8e46}
-    .download-container{text-align:center;margin:40px 0}
-    .download-bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #eee;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;z-index:1000}
-    .download-bar span{font-weight:600}
-    @media(min-width:768px){.download-bar{left:20px;right:20px;bottom:20px;border:1px solid #eee;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.08)}}
-    footer{background:#fff;margin-top:60px;padding:40px 20px;box-shadow:0 -1px 3px rgba(0,0,0,.05)}
-    footer .cols{display:flex;flex-wrap:wrap;gap:20px;max-width:1100px;margin:0 auto}
-    footer .cols>div{flex:1;min-width:240px}
-    footer h3{margin-top:0;font-size:1rem}
-    footer a{display:block;margin:4px 0;color:#555}
+    /* Reset & base */
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Inter', sans-serif; background: #fafafa; color: #222; line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Header / branding */
+    .site-header { padding: 20px; display: flex; align-items: center; justify-content: center; background: #ffffff; border-bottom: 1px solid #ddd; }
+    .site-header .logo { display: flex; align-items: center; gap: 10px; }
+    .site-header .logo img { height: 40px; width: auto; }
+    .site-header .logo .brand-name { font-weight: 700; font-size: 1.5rem; color: #111; }
+
+    /* Main container */
+    .download-section { max-width: 600px; margin: 60px auto; text-align: center; padding: 0 20px; background: #fff; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .download-section .icon { margin-top: 40px; }
+    .download-section .icon img { width: 100px; height: 100px; }
+    .download-section h1 { margin: 24px 0 8px; font-size: 2rem; font-weight: 700; color: #111; }
+    .download-section .version-info { font-size: 0.95rem; color: #555; margin-bottom: 30px; }
+    .download-button { display: inline-flex; align-items: center; gap:8px; padding: 14px 28px; background: #111; color: #fff; font-size: 1.1rem; font-weight: 600; border-radius: 8px; transition: background 0.2s; }
+    .download-button:hover { background: #333; }
+    .download-button img { height:24px; }
+
+    /* Size / Android note */
+    .note { font-size: 0.9rem; color: #555; margin-top: 16px; }
+    .note strong { color: #111; }
+
+    /* Instructions / steps */
+    .instructions { text-align: left; margin: 40px auto 60px; max-width: 600px; padding: 20px; background: #ffffff; border: 1px solid #eee; border-radius: 8px; }
+    .instructions h2 { font-size:1.4rem; margin-bottom: 12px; color: #111; }
+    .instructions ol { margin-left: 20px; color: #444; }
+    .instructions ol li { margin-bottom: 12px; }
+
+    /* Footer / fixed download bar */
+    .download-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #111; color: #fff; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; z-index: 1000; }
+    .download-bar .bar-text { font-size: 1rem; font-weight: 600; }
+    .download-bar .bar-btn { display: inline-flex; align-items: center; gap:8px; padding: 10px 20px; background: #fff; color: #111; border-radius: 8px; font-weight: 600; }
+    @media(min-width: 768px) {
+      .download-bar { left: 20px; right: 20px; bottom: 20px; border-radius: 8px; }
+    }
+
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Download Brick APK</h1>
-    <p>Fast, simple, and transparent — support local businesses with Brick.</p>
+  <header class="site-header">
+    <div class="logo">
+      <img src="images/brickicon.png" alt="Brick Logo" onerror="this.style.display='none'">
+      <span class="brand-name">Brick</span>
+    </div>
   </header>
+
   <main>
-    <section class="download-container">
-      <a href="#" class="btn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Android_logo_2019.png" alt="Android Logo">
-        Download Brick Android APK
+    <section class="download-section">
+      <div class="icon">
+        <img src="images/brickicon.png" alt="Brick App Icon">
+      </div>
+      <h1>Brick Android APK</h1>
+      <p class="version-info">Version 1.0 • 52 MB • Android only</p>
+
+      <a href="https://drive.google.com/uc?export=download&id=1xobSjuIJ8mrtJxKDVNVbAccK5SiV9lWc" class="download-button" download>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Android_logo_2019.png" alt="Android Icon">
+        Download APK
       </a>
-      <p style="margin-top:10px;font-size:0.9rem;color:#555;">
-        Note: This download is for <strong>Android devices (APK file)</strong>. iPhone users should use the App Store.
-      </p>
+
+      <p class="note">This APK file is compatible with Android devices only. Not for iOS.</p>
     </section>
 
     <section class="instructions">
       <h2>How to Install</h2>
       <ol>
-        <li>Download the <strong>Brick APK</strong> file by clicking the button above.</li>
-        <li>On your Android device, go to <em>Settings &gt; Security</em> and enable <strong>Install unknown apps</strong> (if prompted).</li>
-        <li>Open the downloaded APK file and follow the on-screen instructions.</li>
-        <li>Once installed, open <strong>Brick</strong> and start backing local businesses.</li>
+        <li>Tap the “Download APK” button above.</li>
+        <li>If warned, enable <strong>Install from unknown sources</strong> or “Allow installation from this source”.</li>
+        <li>Open the downloaded APK file and follow prompts to install.</li>
+        <li>Launch Brick and start backing small businesses.</li>
       </ol>
     </section>
   </main>
 
   <div class="download-bar">
-    <span>Get Brick for Android (APK)</span>
-    <a href="#" class="btn">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Android_logo_2019.png" alt="Android Logo">
+    <span class="bar-text">Get Brick for Android (APK)</span>
+    <a href="https://drive.google.com/uc?export=download&id=1xobSjuIJ8mrtJxKDVNVbAccK5SiV9lWc" class="bar-btn" download>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Android_logo_2019.png" alt="Android Icon">
       Download APK
     </a>
   </div>
 
-  <footer>
-    <div class="cols">
-      <div>
-        <h3>About Brick</h3>
-        <p>Brick connects backers with small businesses that need supplies. Simple, transparent, and community-driven.</p>
-      </div>
-      <div>
-        <h3>Links</h3>
-        <a href="#">Home</a>
-        <a href="#">Support</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <a href="mailto:support@brick.com">support@brick.com</a>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>
