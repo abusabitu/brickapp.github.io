@@ -6,126 +6,209 @@
 <title>Brick — Confirm Deletion</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#111;background:#fff}
-  .site-header{padding:18px 28px;border-bottom:1px solid #eee;background:#fff}
-  .logo img{height:40px}
-  .hero{padding:60px 20px;text-align:center}
-  .hero h1{font-size:2rem;margin-bottom:12px; font-weight: 700;}
-  .hero p{color:#555;margin-bottom:24px}
-  .form-box{
-    max-width:420px;
-    margin:0 auto;
-    background:#fff;
-    border:1px solid #f0f0f0;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
-    padding:32px;
-    border-radius:12px;
-    text-align:center;
-  }
-  button{
-    width:100%;
-    padding:14px;
-    background:#111;
-    color:#fff;
-    font-weight:700;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    margin-top:16px;
-    font-size:1rem;
-  }
-  button:disabled{background:#aaa;cursor:not-allowed}
-  .msg{margin-top:16px;font-size:.95rem;text-align:center;font-weight:600;}
-  
-  /* Specific styles for deletion messages */
-  .deletion-success h1 { color: #d93025; }
-  .deletion-success p { color: #555; font-size: 1.05rem;}
+  :root {
+    --brand-red: #d93025;
+    --text-color: #111;
+    --gray: #555;
+    --bg: #fff;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-color);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .site-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo img {
+    height: 36px;
+    width: auto;
+  }
+
+  .logo strong {
+    font-size: 1.05rem;
+    color: #222;
+  }
+
+  .hero {
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-box {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    padding: 32px 24px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .form-box h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .form-box p {
+    color: var(--gray);
+    font-size: 1rem;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    background: var(--text-color);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s ease;
+  }
+
+  button:hover {
+    background: #222;
+  }
+
+  button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+  }
+
+  .deletion-success h1 {
+    color: var(--brand-red);
+  }
+
+  .deletion-success p {
+    color: var(--gray);
+  }
+
+  .msg {
+    margin-top: 16px;
+    font-size: .95rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 40px 16px;
+    }
+    .form-box {
+      padding: 24px 16px;
+      border-radius: 10px;
+    }
+    button {
+      font-size: 0.95rem;
+      padding: 12px;
+    }
+  }
 </style>
 </head>
 <body>
 
-<div class="site-header">
-  <div class="logo"><img src="images/logo.png" alt="Brick logo"><strong style="font-size:1.05rem;margin-left:8px">Brick</strong></div>
-</div>
+<header class="site-header">
+  <div class="logo">
+    <img src="https://brickapp.com.ng/images/logo.png" alt="Brick logo">
+    <strong>Brick</strong>
+  </div>
+</header>
 
-<section class="hero">
-  <div class="form-box">
-    <div id="status-message">
-      <h1 id="main-heading">Confirming Deletion...</h1>
-      <p id="sub-text">Please wait while we verify the token to confirm your permanent account deletion.</p>
-    </div>
-    <div id="redirect-button" style="display:none;">
-            <button onclick="window.location.href='https://brickapp.com.ng'">Go to Homepage</button>
-    </div>
-  </div>
-</section>
+<main class="hero">
+  <div class="form-box">
+    <div id="status-message">
+      <h1 id="main-heading">Confirming Deletion...</h1>
+      <p id="sub-text">Please wait while we verify the token to confirm your permanent account deletion.</p>
+    </div>
+    <div id="redirect-button" style="display:none;">
+      <button onclick="window.location.href='https://brickapp.com.ng'">Go to Homepage</button>
+    </div>
+  </div>
+</main>
 
 <script>
-  const statusEl = document.getElementById("status-message");
-  const headingEl = document.getElementById("main-heading");
-  const subTextEl = document.getElementById("sub-text");
-  const redirectBtnEl = document.getElementById("redirect-button");
+  const statusEl = document.getElementById("status-message");
+  const headingEl = document.getElementById("main-heading");
+  const subTextEl = document.getElementById("sub-text");
+  const redirectBtnEl = document.getElementById("redirect-button");
 
-  // The Xano endpoint URL for confirming the deletion
-  const API_ENDPOINT = "https://x8ki-letl-twmt.n7.xano.io/api:zrt8IXcf/delete/verify_email"; 
+  const API_ENDPOINT = "https://x8ki-letl-twmt.n7.xano.io/api:zrt8IXcf/delete/verify_email"; 
+  const url = new URL(window.location.href);
+  const token = url.searchParams.get("token");
 
-  // Extract the token from the URL (e.g., ?token=xyz123)
-  const url = new URL(window.location.href);
-  const token = url.searchParams.get("token");
+  async function confirmDeletion() {
+    if (!token) {
+      headingEl.textContent = "Invalid Link";
+      subTextEl.textContent = "The deletion confirmation token is missing or malformed.";
+      return;
+    }
 
-  async function confirmDeletion() {
-    // 1. Check for token
-    if (!token) {
-      headingEl.textContent = "Invalid Link";
-      subTextEl.textContent = "The deletion confirmation token is missing or malformed.";
-      return;
-    }
+    try {
+      const res = await fetch(API_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token })
+      });
 
-    try {
-      // 2. Send token to Xano API
-      const res = await fetch(API_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: token })
-      });
+      const data = await res.json();
 
-      const data = await res.json();
-      
-      // 3. Handle success response (API returns 200/202)
-      if (res.ok) {
-        // Apply success styling for clarity
-        statusEl.classList.add('deletion-success'); 
-        headingEl.textContent = "Deletion Confirmed!";
-        subTextEl.innerHTML = 
-          "Your account deletion request is now **active** and **irreversible**." +
-          "<br><br>" +
-          "All associated data will be **permanently scrubbed** from our systems within 30 days. Your account is now disabled.";
-        
-        // Optional: Show a checkmark for visual confirmation
-        statusEl.innerHTML += '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#d93025" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle" style="margin-top: 20px;"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';
-        
-        // The redirection here should be to a non-logged-in landing page.
-        setTimeout(() => {
-          window.location.href = "https://brick.com.ng"; // Or a dedicated 'Goodbye' landing page
-        }, 8000); // Redirect after 8 seconds
+      if (res.ok) {
+        statusEl.classList.add('deletion-success'); 
+        headingEl.textContent = "Deletion Confirmed!";
+        subTextEl.innerHTML = `
+          Your account deletion request is now <b>active</b> and <b>irreversible</b>.<br><br>
+          All associated data will be <b>permanently scrubbed</b> from our systems within 30 days. Your account is now disabled.
+        `;
 
-        // Show manual button as a fallback
-        redirectBtnEl.style.display = "block";
+        statusEl.innerHTML += `
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#d93025" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle" style="margin-top:20px;">
+            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+        `;
 
-      } else {
-        // 4. Handle error response (Token expired, already used, etc.)
-        headingEl.textContent = "Confirmation Failed";
-        subTextEl.textContent = data.message || "This deletion link is invalid, expired, or has already been used. Please submit a new deletion request if needed.";
-      }
+        redirectBtnEl.style.display = "block";
+        setTimeout(() => {
+          window.location.href = "https://brickapp.com.ng";
+        }, 8000);
+      } else {
+        headingEl.textContent = "Confirmation Failed";
+        subTextEl.textContent = data.message || "This deletion link is invalid, expired, or has already been used. Please submit a new deletion request if needed.";
+      }
 
-    } catch (err) {
-      headingEl.textContent = "Network Error";
-      subTextEl.textContent = "Could not connect to the server. Please check your internet connection.";
-    }
-  }
+    } catch (err) {
+      headingEl.textContent = "Network Error";
+      subTextEl.textContent = "Could not connect to the server. Please check your internet connection.";
+    }
+  }
 
-  // Run the confirmation function when the page loads
-  confirmDeletion();
+  confirmDeletion();
 </script>
+
 </body>
 </html>
