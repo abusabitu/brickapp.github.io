@@ -3,498 +3,383 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Brick — Fund Supplies for a Return</title>
+<title>Brick — One platform to run and grow your business</title>
+<meta name="description" content="From sourcing supply to selling at the counter to funding your next reorder, Brick connects every part of a growing business in one ecosystem.">
 <link rel="icon" type="image/png" href="images/brickicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* reset & base */
-  *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#111;background:#fff}
+  /* ─────────────────────────────────────────────────────────────
+     BRICK — landing
+     Philosophy mirrored from Square: customer-first storytelling,
+     one bold color on lots of white, lifestyle photography,
+     outcomes over modules, restrained motion + one signature moment.
+     Palette : ink / paper / app-green accent / soft mist
+     Type    : Sora (display) · Inter (body)
+  ───────────────────────────────────────────────────────────────*/
+  :root{
+    --ink:#0f1512;
+    --paper:#ffffff;
+    --mist:#f4f6f4;
+    --line:#e6e9e6;
+    --slate:#586059;
+    --green:#1a7a4a;        /* the single anchor color */
+    --green-deep:#125a37;
+    --green-soft:#e6f1ea;
+    --r:18px;
+    --maxw:1180px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  h1,h2,h3,h4{font-family:Sora,sans-serif;line-height:1.06;letter-spacing:-.025em;margin:0;font-weight:800}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-  /* header */
-  .site-header{position:sticky;top:0;z-index:1200;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid #eee;background:#fff}
-  .logo{display:flex;align-items:center;gap:12px}
-  .logo img{height:40px;width:auto}
-  .nav-right{display:flex;gap:12px;align-items:center}
-  .download-btn{background:#111;color:#fff;padding:10px 16px;border-radius:10px;font-weight:600}
+  /* ── Header ──────────────────────────────────────────── */
+  .hdr{position:sticky;top:0;z-index:1200;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(255,255,255,.85);backdrop-filter:saturate(150%) blur(12px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:32px}
+  .brand .word{font-family:Sora;font-weight:800;font-size:1.28rem;letter-spacing:-.03em}
+  .nav{display:flex;align-items:center;gap:30px}
+  .nav a{font-size:.95rem;color:var(--slate);font-weight:500}
+  .nav a:hover{color:var(--ink)}
+  .nav .cta{background:var(--green);color:#fff;padding:10px 20px;border-radius:999px;font-weight:600;transition:background .15s}
+  .nav .cta:hover{background:var(--green-deep)}
+  @media(max-width:780px){.nav a:not(.cta){display:none}}
 
-  /* hero */
-  .hero{padding:80px 20px 40px;text-align:center}
-  .hero h1{font-size:2.6rem;margin:0 0 12px;color:#111;line-height:1.05}
-  .hero p{max-width:820px;margin:0 auto 26px;color:#555;font-size:1.05rem;line-height:1.6}
-  .cta-row{display:flex;gap:12px;justify-content:center;margin-bottom:48px;flex-wrap:wrap}
-  .btn{padding:12px 28px;border-radius:10px;font-weight:600;border:1px solid #ddd}
-  .btn.primary{background:#111;color:#fff}
-  .btn.ghost{background:#fff;color:#111;border:1px solid #ddd}
+  /* ── Buttons ─────────────────────────────────────────── */
+  .btn{display:inline-block;padding:14px 30px;border-radius:999px;font-weight:600;font-size:1rem;transition:transform .15s var(--ease),background .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.solid{background:var(--green);color:#fff}
+  .btn.solid:hover{background:var(--green-deep)}
+  .btn.line{border:1px solid var(--line);color:var(--ink)}
+  .btn.line:hover{background:var(--mist)}
+  .btn.light{background:#fff;color:var(--ink)}
 
-  /* app mockups container */
-  .mockups{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;align-items:flex-end}
-  .phone{width:250px;max-width:42vw;border-radius:26px;background:#fff;border:12px solid #111;height:520px;box-shadow:0 18px 40px rgba(0,0,0,.08);display:flex;flex-direction:column;overflow:hidden}
-  /* inner screen */
-  .screen{background:#fff;flex:1;display:flex;flex-direction:column;padding:12px;gap:10px}
-  .appbar{display:flex;align-items:center;gap:8px;padding:8px;border-radius:10px}
-  .appbar .logo-sm{width:28px;height:28px;background:#eee;border-radius:6px}
-  .search{flex:1;background:#f3f3f3;padding:8px;border-radius:8px;font-size:.95rem;color:#333}
-  .chips{display:flex;gap:8px;overflow:auto;padding:6px}
-  .chip{padding:6px 10px;background:#f1f1f1;border-radius:999px;font-weight:600;font-size:.85rem;color:#222}
-  .outlets-row{display:flex;gap:10px;overflow:auto;padding:6px}
-  .outlet-card{min-width:110px;background:#f6f6f6;border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-  .outlet-thumb{width:100%;height:74px;background:#ddd;border-radius:6px}
-  .outlet-name{font-size:.85rem;font-weight:700;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
-  .item-list{flex:1;overflow:auto;padding:6px 4px;display:flex;flex-direction:column;gap:12px}
-  .item-card{display:flex;gap:10px;align-items:flex-start;background:#fafafa;border-radius:10px;padding:10px;border:1px solid #f0f0f0}
-  .item-thumb{width:92px;height:70px;background:#e6e6e6;border-radius:8px;flex-shrink:0}
-  .item-body{flex:1;display:flex;flex-direction:column;gap:6px}
-  .item-title{font-weight:700;font-size:1rem;color:#111}
-  .item-desc{font-size:.92rem;color:#555}
-  .item-meta{display:flex;gap:8px;align-items:center;font-size:.92rem;color:#333}
-  .meta-amount{font-weight:700}
-  .meta-roi{color:#777;font-size:.85rem}
+  /* ── Section rhythm ──────────────────────────────────── */
+  section{padding:120px 0}
+  section.snug{padding:80px 0}
+  .eyebrow{font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:18px}
+  .lead{font-size:1.18rem;color:var(--slate);max-width:60ch}
+  .h-xl{font-size:clamp(2.6rem,6vw,4.6rem)}
+  .h-lg{font-size:clamp(2rem,4.6vw,3.2rem)}
+  .h-md{font-size:clamp(1.7rem,3.6vw,2.4rem)}
 
-  /* features/steps/testimonials */
-  .section{padding:64px 20px}
-  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1100px;margin:0 auto}
-  .feature{background:#fff;padding:20px;border-radius:12px;border:1px solid #f0f0f0;box-shadow:0 10px 30px rgba(0,0,0,.03)}
-  .feature h3{margin:0 0 8px;font-size:1.1rem;color:#111}
-  .feature p{margin:0;color:#555;line-height:1.4}
-
-  .steps{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-  .step{padding:18px;border-radius:12px;background:#fff;border:1px solid #f0f0f0;text-align:center}
-  .step h4{margin:0 0 8px;color:#111}
-  .step p{margin:0;color:#666}
-
-  .testimonials{max-width:900px;margin:30px auto 0;display:flex;flex-direction:column;gap:12px}
-  .testimonial{background:#fff;padding:18px;border-radius:10px;border:1px solid #eee;color:#333}
-
-  /* sticky download bar at bottom */
-  .download-bar{position:fixed;left:20px;right:20px;bottom:20px;background:#111;color:#fff;padding:14px 18px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);z-index:1300}
-  .download-bar .text{font-weight:600}
-  .download-bar .dl-btn{background:#fff;color:#111;padding:8px 14px;border-radius:8px;font-weight:700}
-
-  /* footer */
-  footer{padding:40px 20px;background:#f9f9f9;color:#111;border-top:1px solid #eee;text-align:center}
-  footer .cols{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
-  footer p{margin:6px 0;color:#444}
-
-@media (max-width: 880px) {
-  /* Mockups for horizontal scrolling on mobile */
-  .mockups {
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 10px;
-    gap: 12px; /* From your second block */
+  /* ── HERO (Square-style: copy left, big photo) ───────── */
+  .hero{padding:80px 0 96px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+  .hero h1{margin-bottom:22px;max-width:13ch}
+  .hero .lead{margin-bottom:34px;font-size:1.24rem}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-photo{position:relative;border-radius:26px;overflow:hidden;background:var(--green-soft);aspect-ratio:4/5;box-shadow:0 30px 70px rgba(15,21,18,.16)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+  .hero-photo .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Sora;font-weight:700;color:var(--green);font-size:1.2rem;background:linear-gradient(135deg,var(--green-soft),#dcebe1)}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-photo{aspect-ratio:16/12;order:-1}
   }
 
-  /* Phone sizing for horizontal scrolling */
-  .phone {
-    width: 160px; /* From your first block */
-    height: 330px; /* From your first block */
-    max-width: none;
-    border: 8px solid #111;
-    flex-shrink: 0;
-    margin: 0 5px;
+  /* ── Trust strip ─────────────────────────────────────── */
+  .trust{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--mist)}
+  .trust p{text-align:center;margin:0;color:var(--slate);font-size:.9rem;letter-spacing:.03em}
+
+  /* ── PROBLEM (customer-first, Square opens with the human) ── */
+  .problem h2{max-width:18ch;margin-bottom:24px}
+  .problem .lead{font-size:1.3rem}
+  .problem .row{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:28px}
+  .problem .row b{font-family:Sora;font-weight:700;font-size:clamp(1.3rem,3vw,2rem);color:var(--ink)}
+  .problem .row b.dim{color:var(--line)}
+
+  /* ── SIGNATURE: ecosystem connect animation ──────────── */
+  .eco{background:var(--ink);color:#fff;overflow:hidden}
+  .eco .eyebrow{color:var(--green-soft)}
+  .eco h2{max-width:15ch;margin-bottom:16px}
+  .eco .lead{color:#aab2ac}
+  .eco-stage{margin-top:64px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:stretch;position:relative}
+  .eco-rail{position:absolute;top:50%;left:6%;right:6%;height:2px;background:rgba(255,255,255,.1);z-index:0}
+  .eco-rail .fill{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--green),#3fd089);transition:width 1.4s var(--ease)}
+  .eco.go .eco-rail .fill{width:100%}
+  .eco-node{position:relative;z-index:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:24px 18px;text-align:center;opacity:.35;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease),border-color .6s,background .6s}
+  .eco-node .dot{width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.25);margin:0 auto 16px;transition:background .5s,box-shadow .5s}
+  .eco-node h4{font-size:1.06rem;font-weight:700;margin-bottom:6px}
+  .eco-node p{margin:0;font-size:.84rem;color:#9aa29c;line-height:1.45}
+  .eco-node.lit{opacity:1;transform:none;border-color:rgba(63,208,137,.5);background:rgba(26,122,74,.16)}
+  .eco-node.lit .dot{background:#3fd089;box-shadow:0 0 0 6px rgba(63,208,137,.18)}
+  @media(max-width:820px){
+    .eco-stage{grid-template-columns:1fr;gap:14px}
+    .eco-rail{top:6%;bottom:6%;left:50%;right:auto;width:2px;height:auto}
+    .eco-rail .fill{height:0;width:100%;background:linear-gradient(180deg,var(--green),#3fd089);transition:height 1.4s var(--ease)}
+    .eco.go .eco-rail .fill{height:100%}
   }
 
-  /* Hero section text adjustments */
-  .hero h1 {
-    font-size: 1.8rem; /* From your first block */
+  /* ── PRODUCT CHAPTERS (alternating, photo-led) ───────── */
+  .chapter{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .chapter.flip .copy{order:2}
+  .chapter .tag{display:inline-block;font-family:Sora;font-weight:700;font-size:.82rem;letter-spacing:.05em;color:var(--green);background:var(--green-soft);padding:6px 14px;border-radius:999px;margin-bottom:20px}
+  .chapter h3{margin-bottom:16px}
+  .chapter .copy p{color:var(--slate);font-size:1.1rem;max-width:46ch}
+  .chapter ul{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-wrap:wrap;gap:8px 10px}
+  .chapter ul li{font-size:.9rem;font-weight:600;background:var(--mist);padding:8px 15px;border-radius:999px}
+  .shot{aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:var(--mist);border:1px solid var(--line);position:relative}
+  .shot img{width:100%;height:100%;object-fit:cover}
+  .shot .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Sora;font-weight:700;color:#b9c0b9;font-size:1.1rem}
+  @media(max-width:820px){
+    .chapter{grid-template-columns:1fr;gap:28px}
+    .chapter.flip .copy{order:0}
+    .shot{aspect-ratio:16/10}
   }
 
-  .hero p {
-    font-size: 0.95rem;
-  }
+  /* ── OUTCOMES (Square: outcomes, not module names) ───── */
+  .outcomes{background:var(--mist)}
+  .outcomes .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:52px}
+  .oc{background:var(--paper);padding:36px 30px}
+  .oc h3{font-size:1.32rem;font-weight:700;margin-bottom:10px}
+  .oc p{margin:0;color:var(--slate)}
 
-  /* Download bar position */
-  .download-bar {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-  }
-}
-  /* New CSS for offers carousel */
-  .offers-carousel-container {
-      overflow: hidden;
-      max-width: 900px;
-      margin: 0 auto;
-  }
+  /* ── STEPS ───────────────────────────────────────────── */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;margin-top:52px}
+  .step .n{font-family:Sora;font-weight:800;color:var(--green);border-top:2px solid var(--green);padding-top:14px;display:block}
+  .step h4{font-size:1.3rem;font-weight:700;margin:14px 0 8px}
+  .step p{margin:0;color:var(--slate)}
 
-  .offers-carousel {
-    display: flex;
-    gap: 20px;
-    width: fit-content;
-    animation: slideOffers 80s linear infinite;
-  }
+  /* ── TESTIMONIAL (single, large — Square uses big quotes) ── */
+  .quote{background:var(--green);color:#fff}
+  .quote blockquote{font-family:Sora;font-weight:700;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.22;letter-spacing:-.02em;margin:0;max-width:20ch}
+  .quote cite{display:block;margin-top:28px;font-style:normal;font-size:1rem;opacity:.85}
 
-  .offer-card {
-    flex-shrink: 0;
-    width: 250px;
-    background: #f6f6f6;
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  }
+  /* ── CLOSER / DOWNLOAD ───────────────────────────────── */
+  .closer{text-align:center}
+  .closer h2{margin-bottom:18px}
+  .closer .lead{margin:0 auto 36px}
+  .badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .badges img{height:58px}
 
-  .offer-image {
-    width: 100%;
-    height: 150px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 6px;
-    margin-bottom: 8px;
-  }
+  /* ── Footer ──────────────────────────────────────────── */
+  footer{padding:64px 0 44px;border-top:1px solid var(--line)}
+  .foot{display:flex;flex-wrap:wrap;gap:44px;justify-content:space-between}
+  footer p{margin:5px 0;color:var(--slate);font-size:.92rem}
+  footer .strong{color:var(--ink);font-weight:700;font-family:Sora}
+  footer a:hover{color:var(--green)}
+  .copyline{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);color:var(--slate);font-size:.85rem}
 
-  .offer-details {
-    padding: 0 5px;
-  }
-
-  .offer-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 0 0 5px;
-  }
-
-  .offer-info {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0 0 10px;
-  }
-
-  .offer-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-
-  .offer-amount {
-    font-weight: 700;
-    color: #111;
-  }
-
-  .offer-roi {
-    font-size: 0.85rem;
-    color: #777;
-  }
-
-  .outlet-name-blurred {
-    color: transparent;
-    text-shadow: 0 0 8px rgba(0,0,0,0.5);
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  @keyframes slideOffers {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* Pause animation on hover */
-  .offers-carousel-container:hover .offers-carousel {
-    animation-play-state: paused;
+  /* ── Reveal ──────────────────────────────────────────── */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.eco-node{opacity:1;transform:none;transition:none}
+    .eco-rail .fill{transition:none}
+    html{scroll-behavior:auto}
   }
 </style>
-
 </head>
-<body>
+<body id="top">
 
-  <div class="site-header">
-    <div class="logo"><img src="images/logo.png" alt="Brick logo" onerror="this.style.display='none'"></div>
-    <div class="nav-right">
-      <a class="download-btn" href="#download">Download</a>
-    </div>
-  </div>
+  <header class="hdr">
+    <a class="brand" href="#top" aria-label="Brick home">
+      <img src="images/logo.png" alt="Brick" onerror="this.outerHTML='<span class=\'word\'>Brick</span>'">
+    </a>
+    <nav class="nav">
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#products">Products</a>
+      <a href="#why">Why Brick</a>
+      <a class="cta" href="#download">Get the app</a>
+    </nav>
+  </header>
 
   <main>
-    <section class="hero" aria-label="hero">
-      <h1>Fund Supplies for a Return</h1>
-      <p>Support small businesses by funding the supplies they need. Provide products early, help stores restock faster, and follow how your support turns into real store availability.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="#download">Download App</a>
-        <a class="btn ghost" href="#features">How it Works</a>
-      </div>
 
-      <div class="mockups" id="mockups">
-
-        <div class="phone" aria-hidden="false" title="Home Screen">
-          <div class="screen">
-            <div class="appbar"><div class="logo-sm"></div><div class="search">Search products or businesses</div></div>
-
-            <div class="chips" aria-hidden="false">
-              <div class="chip">All</div><div class="chip">Food</div><div class="chip">Beverages</div><div class="chip">Household</div><div class="chip">Others</div>
-            </div>
-
-            <div class="outlets-row" aria-hidden="false">
-              <div class="outlet-card"><div class="outlet-thumb"></div><div class="outlet-name">Mama's Grocer</div></div>
-              <div class="outlet-card"><div class="outlet-thumb"></div><div class="outlet-name">City Mart</div></div>
-              <div class="outlet-card"><div class="outlet-thumb"></div><div class="outlet-name">Corner Store</div></div>
-              <div class="outlet-card"><div class="outlet-thumb"></div><div class="outlet-name">Fresh Depot</div></div>
-            </div>
-
-            <div class="item-list" aria-hidden="false">
-              <div class="item-card">
-                <div class="item-thumb"></div>
-                <div class="item-body">
-                  <div class="item-title">Packaged Rice - 25kg</div>
-                  <div class="item-desc">Bulk supply for quick restock</div>
-                  <div class="item-meta">
-                    <div class="meta-amount">₦45,000</div>
-                    <div class="meta-roi">Expected margin: 8%</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="item-card">
-                <div class="item-thumb"></div>
-                <div class="item-body">
-                  <div class="item-title">Cooking Oil - Carton</div>
-                  <div class="item-desc">Fast-moving everyday product</div>
-                  <div class="item-meta">
-                    <div class="meta-amount">₦32,000</div>
-                    <div class="meta-roi">Expected margin: 6%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+    <!-- ── HERO ──────────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1 class="h-xl">One platform to run and grow your business.</h1>
+          <p class="lead">From sourcing supply to selling at the counter to funding your next reorder — Brick connects every part of a growing business in one place.</p>
+          <div class="hero-cta">
+            <a class="btn solid" href="#download">Get the app</a>
+            <a class="btn line" href="#ecosystem">See how it works</a>
           </div>
         </div>
-
-        <div class="phone" title="Search & Categories">
-          <div class="screen">
-            <div class="appbar"><div class="logo-sm"></div><div class="search">Search by product, outlet or barcode</div></div>
-
-            <div class="chips">
-              <div class="chip">All</div><div class="chip">Fresh</div><div class="chip">Drinks</div><div class="chip">Snacks</div>
-            </div>
-
-            <div style="padding:6px">
-              <div style="height:8px;background:#eee;border-radius:6px;margin-bottom:10px"></div>
-              <div style="height:8px;background:#eee;border-radius:6px;width:70%"></div>
-            </div>
-
-            <div class="item-list">
-              <div class="item-card">
-                <div class="item-thumb"></div>
-                <div class="item-body">
-                  <div class="item-title">Sachet Water (Box)</div>
-                  <div class="item-desc">High turnover</div>
-                  <div class="item-meta">
-                    <div class="meta-amount">₦7,500</div>
-                    <div class="meta-roi">Est. margin: 10%</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="item-card">
-                <div class="item-thumb"></div>
-                <div class="item-body">
-                  <div class="item-title">Biscuits - Multipack</div>
-                  <div class="item-desc">Popular snack item</div>
-                  <div class="item-meta">
-                    <div class="meta-amount">₦2,200</div>
-                    <div class="meta-roi">Est. margin: 12%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="phone" title="Outlet Details">
-          <div class="screen">
-            <div class="appbar"><div class="logo-sm"></div><div style="width:40%"></div></div>
-
-            <div style="padding:6px">
-              <div style="height:80px;background:#e9e9e9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#666">Outlet Preview</div>
-            </div>
-
-            <div style="padding:6px">
-              <div style="font-weight:700;color:#111;margin-bottom:6px">Mama's Grocer</div>
-              <div style="color:#666;font-size:.95rem;margin-bottom:8px">Outlet location • 4.2km</div>
-              <div style="font-size:.95rem;color:#444">Open offers</div>
-            </div>
-
-            <div class="item-list">
-              <div class="item-card">
-                <div class="item-thumb"></div>
-                <div class="item-body">
-                  <div class="item-title">Detergent - Carton</div>
-                  <div class="item-desc">Needed for weekly restock</div>
-                  <div class="item-meta">
-                    <div class="meta-amount">₦18,000</div>
-                    <div class="meta-roi">Est. margin: 7%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div> </section>
-
-    <section class="section" style="padding-top:30px">
-      <div style="max-width:900px;margin:0 auto">
-        <h3 style="text-align:center;color:#111;margin-bottom:12px">Featured Offers</h3>
-        <div class="offers-carousel-container">
-          <div class="offers-carousel">
-            </div>
+        <div class="hero-photo">
+          <img src="images/hero_merchant.jpg" alt="A shop owner using Brick at the counter" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Merchant photo</div>'">
         </div>
       </div>
     </section>
 
-    <section id="features" class="section">
-      <div style="max-width:1100px;margin:0 auto;text-align:center">
-        <h2 style="font-size:2rem;margin-bottom:10px;color:#111">Why business owners & funders choose Brick</h2>
-        <p style="color:#666;max-width:820px;margin:0 auto 24px">A simple, transaction-first flow that helps shops restock faster and gives funders clear visibility into how their funds are used.</p>
-      </div>
+    <div class="trust"><div class="wrap"><p>Helping small retailers and suppliers across Nigeria stay stocked and sell more</p></div></div>
 
-      <div class="features-grid" style="margin-top:28px">
-        <div class="feature"><h3>Product-first listings</h3><p>See exactly what stores need, with clear quantities and timelines.</p></div>
-        <div class="feature"><h3>Smooth transactions</h3><p>Complete backing quickly with simple payment flows and clear receipts.</p></div>
-        <div class="feature"><h3>Track every order</h3><p>Follow fulfilment status and availability as stores receive stock.</p></div>
-        <div class="feature"><h3>Community impact</h3><p>Help local stores keep shelves full and customers happy.</p></div>
-      </div>
-    </section>
-
-    <section class="section" style="background:#fff">
-      <div style="max-width:1100px;margin:0 auto;text-align:center">
-        <h2 style="font-size:2rem;margin-bottom:10px;color:#111">How it works</h2>
-        <p style="color:#666;max-width:820px;margin:0 auto 24px">Three simple steps to back supplies and help stores stock faster.</p>
-        <div class="steps" style="margin-top:20px">
-          <div class="step"><h4>Discover listings</h4><p>Browse active product needs from verified businesses</p></div>
-          <div class="step"><h4>Fund product</h4><p>Place funds to secure the supply for that business</p></div>
-          <div class="step"><h4>See impact</h4><p>Track delivery and availability as stores restock.</p></div>
+    <!-- ── PROBLEM (start with the human) ────────────── -->
+    <section class="problem">
+      <div class="wrap reveal">
+        <div class="eyebrow">The reality of growing a business</div>
+        <h2 class="h-lg">Running a shop means juggling everything at once.</h2>
+        <p class="lead">Finding stock, keeping count of it, ringing up sales, and finding the cash for the next order — usually across tools that don't talk to each other. The handoffs between them are where time and money leak out.</p>
+        <div class="row">
+          <b>Suppliers.</b><b>Inventory.</b><b>Sales.</b><b>Cash flow.</b><b>Operations.</b>
         </div>
       </div>
     </section>
 
-    <section class="section" style="padding-top:30px">
-      <div style="max-width:900px;margin:0 auto">
-        <h3 style="text-align:center;color:#111;margin-bottom:12px">What users say</h3>
-        <div class="testimonials">
-          <div class="testimonial">“I got the supplies I needed without stress. In less than a week, my shop was restocked and sales picked up again.” — Amina, Grocery Shop Owner</div>
-          <div class="testimonial">“Funding supplies is so easy. I can see where my money goes and know it helps real businesses stay stocked.” — Chidi, Backer</div>
+    <!-- ── SIGNATURE: ECOSYSTEM ──────────────────────── -->
+    <section class="eco" id="ecosystem">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="eyebrow">One connected ecosystem</div>
+          <h2 class="h-lg">Brick brings it all together.</h2>
+          <p class="lead">Each product owns one stage of the journey and hands off cleanly to the next, so a single sale flows from the supplier all the way to your growth.</p>
         </div>
+        <div class="eco-stage" id="eco-stage">
+          <div class="eco-rail"><div class="fill"></div></div>
+          <div class="eco-node"><div class="dot"></div><h4>Supplier</h4><p>Verified suppliers list what they have.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Brick Market</h4><p>Businesses order the stock they need.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Brick One</h4><p>Inventory, sales & finance, day to day.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Brick Fund</h4><p>Capital turns demand into stock.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Growth</h4><p>Fuller shelves, faster restocks.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRODUCT CHAPTERS ──────────────────────────── -->
+    <section id="products">
+      <div class="wrap chapter reveal">
+        <div class="copy">
+          <span class="tag">Brick Market</span>
+          <h3 class="h-md">Order smarter from suppliers you can trust.</h3>
+          <p>Browse and buy from verified suppliers in one place. See what's available, at what price, and how fast it ships — no phone tag, no guesswork.</p>
+          <ul><li>Verified suppliers</li><li>Clear pricing</li><li>Bulk ordering</li><li>Delivery timelines</li></ul>
+        </div>
+        <div class="shot"><img src="images/market_shot.jpg" alt="Brick Market" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick Market</div>'"></div>
+      </div>
+    </section>
+
+    <section class="snug">
+      <div class="wrap chapter flip reveal">
+        <div class="copy">
+          <span class="tag">Brick One</span>
+          <h3 class="h-md">Always know what's on your shelves.</h3>
+          <p>The operating system for the shop floor — procurement, live inventory, point-of-sale, and finance. Offline-first, so it keeps working when the network doesn't.</p>
+          <ul><li>Inventory</li><li>Point of sale</li><li>Procurement</li><li>Finance</li><li>Reporting</li></ul>
+        </div>
+        <div class="shot"><img src="images/brickone_shot.jpg" alt="Brick One" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick One</div>'"></div>
+      </div>
+    </section>
+
+    <section class="snug">
+      <div class="wrap chapter reveal">
+        <div class="copy">
+          <span class="tag">Brick Fund</span>
+          <h3 class="h-md">Access capital when your business needs it.</h3>
+          <p>Funders back the supplies a business needs and watch their support turn into real store availability. Transparent, transaction-first, and tracked every step.</p>
+          <ul><li>Inventory financing</li><li>Supplier financing</li><li>Clear returns</li><li>Full tracking</li></ul>
+        </div>
+        <div class="shot"><img src="images/brickfund_shot.jpg" alt="Brick Fund" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick Fund</div>'"></div>
+      </div>
+    </section>
+
+    <!-- ── OUTCOMES ──────────────────────────────────── -->
+    <section class="outcomes" id="why">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="eyebrow">Why Brick</div>
+          <h2 class="h-lg">You don't buy modules. You buy outcomes.</h2>
+        </div>
+        <div class="grid reveal">
+          <div class="oc"><h3>Never run out of your best sellers.</h3><p>Live stock that updates with every sale and flags what to reorder.</p></div>
+          <div class="oc"><h3>Stop chasing suppliers by phone.</h3><p>One marketplace of verified supply with prices you can compare.</p></div>
+          <div class="oc"><h3>Grow beyond cash on hand.</h3><p>Financing that turns demand into stocked shelves, not paperwork.</p></div>
+          <div class="oc"><h3>See the whole business in one view.</h3><p>Sales, stock, and funding connected — no switching between tools.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ──────────────────────────────── -->
+    <section>
+      <div class="wrap">
+        <div class="reveal">
+          <div class="eyebrow">Getting started</div>
+          <h2 class="h-lg">Up and running in three steps.</h2>
+        </div>
+        <div class="steps reveal">
+          <div class="step"><span class="n">01</span><h4>Set up your outlet</h4><p>Add your shop, pick your categories, and you're live in minutes.</p></div>
+          <div class="step"><span class="n">02</span><h4>Stock and sell</h4><p>Order through Market, manage it in Brick One, sell from day one.</p></div>
+          <div class="step"><span class="n">03</span><h4>Grow with funding</h4><p>Tap Brick Fund when you're ready to scale beyond cash on hand.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BIG QUOTE ─────────────────────────────────── -->
+    <section class="quote">
+      <div class="wrap reveal">
+        <blockquote>“In under a week my shop was fully restocked and sales picked up again.”</blockquote>
+        <cite>Amina — grocery shop owner, Kano</cite>
       </div>
     </section>
 
   </main>
 
-  <section id="download" style="padding:60px 20px;text-align:center;background:#fff">
-  <h2 style="font-size:2rem;color:#111;margin-bottom:20px">Get the Brick App</h2>
-  <p style="max-width:720px;margin:0 auto 30px;color:#555">Support small businesses by funding the supplies they need — fast, simple, and transparent.</p>
-  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-    <a href="https://play.google.com/store/apps/details?id=ng.com.brickapp" style="display:inline-block"><img src="images/google-play-badge.png" alt="Download on Google Play" style="height:60px"></a>
-    <a href="#" style="display:inline-block"><img src="images/app-store-badge.png" alt="Download on App Store" style="height:60px"></a>
-  </div>
-</section>
-
-  <div class="download-bar" id="download-bar" role="region" aria-label="download bar">
-    <div class="text">Get the Brick app — fund supplies and support stores today</div>
-    <div><a class="dl-btn" href="#download">Download</a></div>
-  </div>
+  <!-- ── CLOSER / DOWNLOAD ─────────────────────────────── -->
+  <section class="closer" id="download">
+    <div class="wrap">
+      <h2 class="h-lg">Get the Brick app.</h2>
+      <p class="lead">One ecosystem for supply, sales, and financing — fast, simple, and transparent.</p>
+      <div class="badges">
+        <a href="https://play.google.com/store/apps/details?id=ng.com.brickapp"><img src="images/google-play-badge.png" alt="Get it on Google Play"></a>
+        <a href="#"><img src="images/app-store-badge.png" alt="Download on the App Store"></a>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <div class="cols">
-      <div>
-        <img src="images/logo.png" alt="Brick logo" style="height:36px;margin-bottom:8px" onerror="this.style.display='none'">
-        <p style="max-width:360px;color:#555">Brick connects people who want to fund supplies with small businesses that need stock. Simple transactions. Clear tracking.</p>
+    <div class="wrap foot">
+      <div style="max-width:360px">
+        <img src="images/logo.png" alt="Brick" style="height:32px;margin-bottom:12px" onerror="this.outerHTML='<div class=&quot;strong&quot; style=&quot;font-size:1.3rem;margin-bottom:12px&quot;>Brick</div>'">
+        <p>One connected ecosystem for growing businesses — supply, operations, and financing in one place.</p>
       </div>
-
-      <div style="text-align:right;min-width:200px">
-        <p style="font-weight:700;color:#111">A Solution by Celar Retail Limited</p>
-        <p style="font-weight:700;color:#111">Contact</p>
-        <p>Email: <a href="mailto:info@brickapp.com">mybrickapp@gmail.com</a></p>
+      <div style="text-align:right;min-width:220px">
+        <p class="strong">A solution by Celar Retail Limited</p>
+        <p class="strong" style="margin-top:14px">Contact</p>
+        <p>Email: <a href="mailto:mybrickapp@gmail.com">mybrickapp@gmail.com</a></p>
         <p>Phone: (234) 816-2165-996</p>
-        <p style="margin-top:8px;font-weight:700;color:#111">Address</p>
+        <p class="strong" style="margin-top:14px">Address</p>
         <p>19 Zaria Road, Kano, Nigeria</p>
       </div>
     </div>
-    <p style="margin-top:18px;color:#666">&copy; 2025 Brick App. All rights reserved.</p>
+    <div class="wrap"><p class="copyline">© 2025 Brick App. All rights reserved.</p></div>
   </footer>
 
 <script>
-/* If you DO have real screenshots in "images/" (same folder as this HTML), put them with these names:
-   - images/homepage_mockup.png
-   - images/category_mockup.png
-   - images/outlet_mockup.png
-   The script below will replace the mockup screens with real images if found.
-*/
+/* ── Scroll reveal ───────────────────────────────────────────── */
 (function(){
-  const realImages = [
-    {selIndex:0, src:'images/homepage_mockup.png'},
-    {selIndex:1, src:'images/category_mockup.png'},
-    {selIndex:2, src:'images/outlet_mockup.png'}
-  ];
-  // attempt to load and swap; if load fails, leave the HTML mockup visible
-  realImages.forEach((info)=>{
-    const img = new Image();
-    img.onload = function(){
-      // replace the .phone at the index with a simple image screen
-      const phones = document.querySelectorAll('.phone');
-      if(!phones || !phones[info.selIndex]) return;
-      const container = phones[info.selIndex];
-      container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;background:#fff;height:100%;"><img src="'+info.src+'" style="max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.08);"></div>';
-    };
-    img.onerror = function(){ /* keep placeholder */ };
-    img.src = info.src;
-  });
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.14});
+  els.forEach(function(e){ io.observe(e); });
 })();
 
-// New script for the offers carousel
-async function fetchOffers() {
-  const url = 'https://x8ki-letl-twmt.n7.xano.io/api:zrt8IXcf/offer';
-  try {
-    const response = await fetch(url);
-    const offers = await response.json();
-
-    const carouselContainer = document.querySelector('.offers-carousel');
-
-    // Create a copy of the offers to make the carousel seamless
-    const doubledOffers = [...offers, ...offers]; 
-
-    // Loop through each offer and create an HTML card
-    doubledOffers.forEach(offer => {
-      const offerCard = document.createElement('div');
-      offerCard.classList.add('offer-card');
-      
-      const outletName = offer.outlet ? `<div class="outlet-name-blurred">${offer.outlet}</div>` : '';
-
-      offerCard.innerHTML = `
-        <div class="offer-image" style="background-image: url('${offer.image}');"></div>
-        <div class="offer-details">
-          <h4 class="offer-title">${offer.products[0].Name}</h4>
-          <p class="offer-info">${offer.info}</p>
-          <div class="offer-meta">
-            <span class="offer-amount">₦${offer.amount.toLocaleString()}</span>
-            <span class="offer-roi">${offer.roi}</span>
-          </div>
-          ${outletName}
-        </div>
-      `;
-      carouselContainer.appendChild(offerCard);
-    });
-
-  } catch (error) {
-    console.error('Error fetching offers:', error);
+/* ── Signature ecosystem: rail fills, nodes light up in sequence ── */
+(function(){
+  var stage = document.getElementById('eco-stage');
+  var eco = document.querySelector('.eco');
+  if(!stage) return;
+  var nodes = stage.querySelectorAll('.eco-node');
+  var fired = false;
+  function run(){
+    if(fired) return; fired = true;
+    eco.classList.add('go');
+    nodes.forEach(function(n,i){ setTimeout(function(){ n.classList.add('lit'); }, 260*i); });
   }
-}
-
-// Call the function to populate the carousel
-fetchOffers();
+  if(!('IntersectionObserver' in window)){ run(); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ run(); io.disconnect(); } });
+  },{threshold:.45});
+  io.observe(stage);
+})();
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
