@@ -12,7 +12,7 @@
 <style>
   /* ─────────────────────────────────────────────────────────────
      BRICK — landing
-     Philosophy mirrored: customer-first storytelling,
+     Philosophy mirrored : customer-first storytelling,
      one bold color on lots of white, lifestyle photography,
      outcomes over modules, restrained motion + one signature moment.
      Palette : ink / paper / app-green accent / soft mist
@@ -69,7 +69,7 @@
   .h-lg{font-size:clamp(2rem,4.6vw,3.2rem)}
   .h-md{font-size:clamp(1.7rem,3.6vw,2.4rem)}
 
-  /* ── HERO (Square-style: copy left, big photo) ───────── */
+  /* ── HERO (style: copy left, big photo) ───────── */
   .hero{padding:80px 0 96px}
   .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
   .hero h1{margin-bottom:22px;max-width:13ch}
@@ -87,7 +87,7 @@
   .trust{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--mist)}
   .trust p{text-align:center;margin:0;color:var(--slate);font-size:.9rem;letter-spacing:.03em}
 
-  /* ── PROBLEM (customer-first, opens with the human) ── */
+  /* ── PROBLEM (customer-first, Square opens with the human) ── */
   .problem h2{max-width:18ch;margin-bottom:24px}
   .problem .lead{font-size:1.3rem}
   .problem .row{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:28px}
@@ -141,7 +141,7 @@
     .shot{aspect-ratio:16/10}
   }
 
-  /* ── OUTCOMES (outcomes, not module names) ───── */
+  /* ── OUTCOMES ( outcomes, not module names) ───── */
   .outcomes{background:var(--mist)}
   .outcomes .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:52px}
   .oc{background:var(--paper);padding:36px 30px}
@@ -162,9 +162,18 @@
   /* ── CLOSER / DOWNLOAD ───────────────────────────────── */
   .closer{text-align:center}
   .closer h2{margin-bottom:18px}
-  .closer .lead{margin:0 auto 36px}
-  .badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .badges img{height:58px}
+  .closer .lead{margin:0 auto 52px}
+  .app-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:940px;margin:0 auto;text-align:left}
+  .app-card{border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;display:flex;flex-direction:column;background:var(--paper);transition:border-color .2s,transform .2s var(--ease),box-shadow .2s}
+  .app-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,21,18,.08)}
+  .app-card.soon{background:var(--mist);border-style:dashed}
+  .app-card .app-name{font-family:Sora;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;margin-bottom:6px}
+  .app-card .app-line{color:var(--slate);font-size:.95rem;margin:0 0 22px;flex:1}
+  .app-card .stores{display:flex;flex-direction:column;gap:10px}
+  .app-card .stores a{display:block}
+  .app-card .stores img{height:46px;width:auto}
+  .app-card .soon-pill{align-self:flex-start;font-family:Sora;font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:var(--green-soft);padding:8px 16px;border-radius:999px}
+  @media(max-width:820px){.app-cards{grid-template-columns:1fr;max-width:420px}.app-card .app-line{flex:none}}
 
   /* ── Footer ──────────────────────────────────────────── */
   footer{padding:64px 0 44px;border-top:1px solid var(--line)}
@@ -348,10 +357,33 @@
   <section class="closer" id="download">
     <div class="wrap">
       <h2 class="h-lg">Ready when you are.</h2>
-      <p class="lead">Source, sell, and fund your business in one place. Download Brick and get started today.</p>
-      <div class="badges">
-        <a href="https://play.google.com/store/apps/details?id=ng.com.brickapp"><img src="images/google-play-badge.png" alt="Get it on Google Play"></a>
-        <a href="#"><img src="images/app-store-badge.png" alt="Download on the App Store"></a>
+      <p class="lead">Each app handles one part of your business. Get the ones you need — Market is on the way.</p>
+      <div class="app-cards">
+
+        <div class="app-card">
+          <div class="app-name">Brick One</div>
+          <p class="app-line">Run your day — inventory, sales, and finance.</p>
+          <div class="stores">
+            <a href="https://play.google.com/store/apps/details?id=ng.com.brickapp"><img src="images/google-play-badge.png" alt="Get Brick One on Google Play"></a>
+            <a href="#"><img src="images/app-store-badge.png" alt="Download Brick One on the App Store"></a>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <div class="app-name">Brick Fund</div>
+          <p class="app-line">Fund your growth when you're ready to scale.</p>
+          <div class="stores">
+            <a href="#"><img src="images/google-play-badge.png" alt="Get Brick Fund on Google Play"></a>
+            <a href="#"><img src="images/app-store-badge.png" alt="Download Brick Fund on the App Store"></a>
+          </div>
+        </div>
+
+        <div class="app-card soon">
+          <div class="app-name">Brick Market</div>
+          <p class="app-line">Source everything from verified suppliers.</p>
+          <span class="soon-pill">Coming soon</span>
+        </div>
+
       </div>
     </div>
   </section>
