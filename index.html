@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Brick — One platform to run and grow your business</title>
-<meta name="description" content="From sourcing supply to selling at the counter to funding your next reorder, Brick connects every part of a growing business in one ecosystem.">
+<meta name="description" content="From sourcing supply to selling and operations to funding your next order, Brick connects every part of a growing business — retailers, restaurants, manufacturers, and SMEs — in one ecosystem.">
 <link rel="icon" type="image/png" href="images/brickicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,6 +93,14 @@
   .problem .row{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:28px}
   .problem .row b{font-family:Sora;font-weight:700;font-size:clamp(1.3rem,3vw,2rem);color:var(--ink)}
   .problem .row b.dim{color:var(--line)}
+
+  /* ── AUDIENCE band ───────────────────────────────────── */
+  .who{padding:84px 0}
+  .who .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:44px}
+  .who .card{border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;background:var(--paper);transition:border-color .2s,transform .2s var(--ease)}
+  .who .card:hover{border-color:var(--green);transform:translateY(-3px)}
+  .who .card h4{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+  .who .card p{margin:0;color:var(--slate);font-size:.94rem}
 
   /* ── SIGNATURE: ecosystem connect animation ──────────── */
   .eco{background:var(--ink);color:#fff;overflow:hidden}
@@ -196,29 +204,45 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <h1 class="h-xl">One platform to run and grow your business.</h1>
-          <p class="lead">From sourcing supply to selling at the counter to funding your next reorder — Brick connects every part of a growing business in one place.</p>
+          <h1 class="h-xl">Everything your business runs on, in one place.</h1>
+          <p class="lead">Source your supply, run your day, and fund your next order — however you make your money. Brick fits the way you already work.</p>
           <div class="hero-cta">
             <a class="btn solid" href="#download">Get the app</a>
             <a class="btn line" href="#ecosystem">See how it works</a>
           </div>
         </div>
         <div class="hero-photo">
-          <img src="images/hero_merchant.jpg" alt="A shop owner using Brick at the counter" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Merchant photo</div>'">
+          <img src="images/hero_merchant.jpg" alt="A business owner using Brick" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Business owner photo</div>'">
         </div>
       </div>
     </section>
 
-    <div class="trust"><div class="wrap"><p>Helping small retailers and suppliers across Nigeria stay stocked and sell more</p></div></div>
+    <div class="trust"><div class="wrap"><p>Trusted by retailers, restaurants, manufacturers, and SMEs across Nigeria</p></div></div>
 
     <!-- ── PROBLEM (start with the human) ────────────── -->
     <section class="problem">
       <div class="wrap reveal">
-        <div class="eyebrow">The reality of growing a business</div>
-        <h2 class="h-lg">Running a shop means juggling everything at once.</h2>
-        <p class="lead">Finding stock, keeping count of it, ringing up sales, and finding the cash for the next order — usually across tools that don't talk to each other. The handoffs between them are where time and money leak out.</p>
+        <div class="eyebrow">The reality of running a business</div>
+        <h2 class="h-lg">You're juggling everything at once.</h2>
+        <p class="lead">Sourcing what you need, keeping count of it, taking sales, and finding the cash for your next run — across tools that don't talk to each other. The gaps between them are where your time and money slip away.</p>
         <div class="row">
           <b>Suppliers.</b><b>Inventory.</b><b>Sales.</b><b>Cash flow.</b><b>Operations.</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHO IT'S FOR ──────────────────────────────── -->
+    <section class="who">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="eyebrow">For every kind of business</div>
+          <h2 class="h-lg">Made for the way you work.</h2>
+        </div>
+        <div class="grid reveal">
+          <div class="card"><h4>Retailers</h4><p>Shops and stores managing fast-moving stock and daily sales.</p></div>
+          <div class="card"><h4>Restaurants</h4><p>Kitchens and cafés tracking ingredients, supplies, and orders.</p></div>
+          <div class="card"><h4>Manufacturers</h4><p>Producers sourcing raw materials and supplying down the chain.</p></div>
+          <div class="card"><h4>SMEs</h4><p>Any growing business that needs supply, operations, and capital in one place.</p></div>
         </div>
       </div>
     </section>
@@ -228,16 +252,16 @@
       <div class="wrap">
         <div class="reveal">
           <div class="eyebrow">One connected ecosystem</div>
-          <h2 class="h-lg">Brick brings it all together.</h2>
-          <p class="lead">Each product owns one stage of the journey and hands off cleanly to the next, so a single sale flows from the supplier all the way to your growth.</p>
+          <h2 class="h-lg">Every piece, working together.</h2>
+          <p class="lead">Every Brick product owns one part of your day and passes cleanly to the next — so a single order flows from your supplier all the way to your growth.</p>
         </div>
         <div class="eco-stage" id="eco-stage">
           <div class="eco-rail"><div class="fill"></div></div>
-          <div class="eco-node"><div class="dot"></div><h4>Supplier</h4><p>Verified suppliers list what they have.</p></div>
-          <div class="eco-node"><div class="dot"></div><h4>Brick Market</h4><p>Businesses order the stock they need.</p></div>
-          <div class="eco-node"><div class="dot"></div><h4>Brick One</h4><p>Inventory, sales & finance, day to day.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Supplier</h4><p>Verified suppliers post what they've got.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Brick Market</h4><p>You order the stock you need.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Brick One</h4><p>You run sales, stock, and finance.</p></div>
           <div class="eco-node"><div class="dot"></div><h4>Brick Fund</h4><p>Capital turns demand into stock.</p></div>
-          <div class="eco-node"><div class="dot"></div><h4>Growth</h4><p>Fuller shelves, faster restocks.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Growth</h4><p>You're always ready to sell more.</p></div>
         </div>
       </div>
     </section>
@@ -247,8 +271,8 @@
       <div class="wrap chapter reveal">
         <div class="copy">
           <span class="tag">Brick Market</span>
-          <h3 class="h-md">Order smarter from suppliers you can trust.</h3>
-          <p>Browse and buy from verified suppliers in one place. See what's available, at what price, and how fast it ships — no phone tag, no guesswork.</p>
+          <h3 class="h-md">Source it all.</h3>
+          <p>Buy from verified suppliers in one place. See what's available, what it costs, and how fast it ships — no phone tag, no guesswork.</p>
           <ul><li>Verified suppliers</li><li>Clear pricing</li><li>Bulk ordering</li><li>Delivery timelines</li></ul>
         </div>
         <div class="shot"><img src="images/market_shot.jpg" alt="Brick Market" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick Market</div>'"></div>
@@ -259,8 +283,8 @@
       <div class="wrap chapter flip reveal">
         <div class="copy">
           <span class="tag">Brick One</span>
-          <h3 class="h-md">Always know what's on your shelves.</h3>
-          <p>The operating system for the shop floor — procurement, live inventory, point-of-sale, and finance. Offline-first, so it keeps working when the network doesn't.</p>
+          <h3 class="h-md">Run your day.</h3>
+          <p>Your business, in one app — procurement, live inventory, point of sale, and finance, whether you're behind a counter, a kitchen, or a production line. Works offline, so it keeps going when your network doesn't.</p>
           <ul><li>Inventory</li><li>Point of sale</li><li>Procurement</li><li>Finance</li><li>Reporting</li></ul>
         </div>
         <div class="shot"><img src="images/brickone_shot.jpg" alt="Brick One" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick One</div>'"></div>
@@ -271,8 +295,8 @@
       <div class="wrap chapter reveal">
         <div class="copy">
           <span class="tag">Brick Fund</span>
-          <h3 class="h-md">Access capital when your business needs it.</h3>
-          <p>Funders back the supplies a business needs and watch their support turn into real store availability. Transparent, transaction-first, and tracked every step.</p>
+          <h3 class="h-md">Fund your growth.</h3>
+          <p>Get the capital to stock up when you need it. Funders back the supplies you need and watch their support turn into real, working stock — transparent and tracked every step.</p>
           <ul><li>Inventory financing</li><li>Supplier financing</li><li>Clear returns</li><li>Full tracking</li></ul>
         </div>
         <div class="shot"><img src="images/brickfund_shot.jpg" alt="Brick Fund" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick Fund</div>'"></div>
@@ -284,13 +308,13 @@
       <div class="wrap">
         <div class="reveal">
           <div class="eyebrow">Why Brick</div>
-          <h2 class="h-lg">You don't buy modules. You buy outcomes.</h2>
+          <h2 class="h-lg">Spend less time managing it all.</h2>
         </div>
         <div class="grid reveal">
-          <div class="oc"><h3>Never run out of your best sellers.</h3><p>Live stock that updates with every sale and flags what to reorder.</p></div>
-          <div class="oc"><h3>Stop chasing suppliers by phone.</h3><p>One marketplace of verified supply with prices you can compare.</p></div>
-          <div class="oc"><h3>Grow beyond cash on hand.</h3><p>Financing that turns demand into stocked shelves, not paperwork.</p></div>
-          <div class="oc"><h3>See the whole business in one view.</h3><p>Sales, stock, and funding connected — no switching between tools.</p></div>
+          <div class="oc"><h3>Never run out.</h3><p>Live stock that updates with every sale and tells you what to reorder.</p></div>
+          <div class="oc"><h3>Skip the phone calls.</h3><p>One marketplace of verified supply, with prices you can compare.</p></div>
+          <div class="oc"><h3>Grow beyond your cash.</h3><p>Funding that turns demand into working stock, not paperwork.</p></div>
+          <div class="oc"><h3>See it all in one place.</h3><p>Your sales, stock, and funding connected — no switching between tools.</p></div>
         </div>
       </div>
     </section>
@@ -300,12 +324,12 @@
       <div class="wrap">
         <div class="reveal">
           <div class="eyebrow">Getting started</div>
-          <h2 class="h-lg">Up and running in three steps.</h2>
+          <h2 class="h-lg">Start in three steps.</h2>
         </div>
         <div class="steps reveal">
-          <div class="step"><span class="n">01</span><h4>Set up your outlet</h4><p>Add your shop, pick your categories, and you're live in minutes.</p></div>
-          <div class="step"><span class="n">02</span><h4>Stock and sell</h4><p>Order through Market, manage it in Brick One, sell from day one.</p></div>
-          <div class="step"><span class="n">03</span><h4>Grow with funding</h4><p>Tap Brick Fund when you're ready to scale beyond cash on hand.</p></div>
+          <div class="step"><span class="n">01</span><h4>Set up your business</h4><p>Add your business, pick your categories, and go live in minutes.</p></div>
+          <div class="step"><span class="n">02</span><h4>Stock and sell</h4><p>Source through Market, run it in Brick One, sell from day one.</p></div>
+          <div class="step"><span class="n">03</span><h4>Grow with funding</h4><p>Tap Brick Fund when you're ready to scale beyond your cash.</p></div>
         </div>
       </div>
     </section>
@@ -323,8 +347,8 @@
   <!-- ── CLOSER / DOWNLOAD ─────────────────────────────── -->
   <section class="closer" id="download">
     <div class="wrap">
-      <h2 class="h-lg">Get the Brick app.</h2>
-      <p class="lead">One ecosystem for supply, sales, and financing — fast, simple, and transparent.</p>
+      <h2 class="h-lg">Ready when you are.</h2>
+      <p class="lead">Source, sell, and fund your business in one place. Download Brick and get started today.</p>
       <div class="badges">
         <a href="https://play.google.com/store/apps/details?id=ng.com.brickapp"><img src="images/google-play-badge.png" alt="Get it on Google Play"></a>
         <a href="#"><img src="images/app-store-badge.png" alt="Download on the App Store"></a>
