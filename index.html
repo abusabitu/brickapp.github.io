@@ -83,6 +83,30 @@
     .hero-photo{aspect-ratio:16/12;order:-1}
   }
 
+  /* ── App highlight overlay (motion) ─────────────────── */
+  .ah-wrap{position:absolute;left:18px;right:18px;bottom:18px;max-width:250px;opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease) .15s,transform .7s var(--ease) .15s;z-index:2}
+  .ah-wrap.in{opacity:1;transform:translateY(0)}
+  .app-highlight{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-radius:18px;padding:18px 20px;box-shadow:0 20px 44px rgba(15,21,18,.2);animation:ah-float 5.5s ease-in-out infinite}
+  .ah-top{display:flex;align-items:center;gap:8px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+  .ah-dot{width:8px;height:8px;border-radius:50%;background:#3fd089;box-shadow:0 0 0 4px rgba(63,208,137,.22);animation:ah-pulse 1.7s ease-in-out infinite}
+  .ah-figure{display:flex;flex-direction:column;margin-bottom:14px}
+  .ah-num{font-family:Sora;font-weight:800;font-size:1.55rem;color:var(--ink);letter-spacing:-.02em}
+  .ah-label{font-size:.8rem;color:var(--slate);margin-top:2px}
+  .ah-bars{display:flex;align-items:flex-end;gap:6px;height:34px}
+  .ah-bars span{flex:1;height:0;background:linear-gradient(180deg,var(--green),var(--green-deep));border-radius:4px 4px 2px 2px;transition:height .8s var(--ease)}
+  .ah-wrap.in .ah-bars span{height:var(--h)}
+  .ah-bars span:nth-child(1){transition-delay:.35s}
+  .ah-bars span:nth-child(2){transition-delay:.45s}
+  .ah-bars span:nth-child(3){transition-delay:.55s}
+  .ah-bars span:nth-child(4){transition-delay:.65s}
+  .ah-bars span:nth-child(5){transition-delay:.75s}
+  .ah-toast{position:absolute;top:18px;right:18px;z-index:2;display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-size:.78rem;font-weight:600;padding:10px 16px;border-radius:999px;box-shadow:0 14px 32px rgba(15,21,18,.28);opacity:0;transform:translateY(-10px) scale(.94);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .ah-toast.in{opacity:1;transform:translateY(0) scale(1)}
+  .ah-toast .ah-check{color:#3fd089;font-weight:800}
+  @keyframes ah-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes ah-pulse{0%,100%{box-shadow:0 0 0 4px rgba(63,208,137,.22)}50%{box-shadow:0 0 0 8px rgba(63,208,137,.08)}}
+  @media(max-width:480px){.ah-wrap{max-width:200px;padding:0}}
+
   /* ── Trust strip ─────────────────────────────────────── */
   .trust{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--mist)}
   .trust p{text-align:center;margin:0;color:var(--slate);font-size:.9rem;letter-spacing:.03em}
@@ -141,6 +165,186 @@
     .shot{aspect-ratio:16/10}
   }
 
+  /* ── App UX glimpse (real Brick One screens: POS · Inventory · Brick Score) ── */
+  .shot.ux-shot{display:flex;align-items:center;justify-content:center;background:#fff;border:none;box-shadow:none;aspect-ratio:auto;border-radius:0;padding:20px 0}
+  .phone-mock{position:relative;width:214px;aspect-ratio:9/18.4;background:var(--ink);border-radius:34px;padding:9px;box-shadow:0 34px 64px rgba(15,21,18,.28);
+    --pg:#1A7A4A;--pgd:#135C38;--pgl:#E8F5EE;--pbg:#F6F8F7;--ibg:#F5F5F5;--warn:#FB8C00;--danger:#E53935;--slate2:#607D8B;--ink2:#20261F;--sub:#8A938C}
+  .phone-notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:62px;height:16px;background:var(--ink);border-radius:0 0 12px 12px;z-index:3}
+  .phone-screen{position:relative;width:100%;height:100%;background:#fff;border-radius:25px;overflow:hidden;padding-top:20px}
+  .ux-panels{position:relative;height:100%}
+  .ux-panel{position:absolute;inset:0;top:-20px;opacity:0;animation:ux-panel-fade 9.6s ease-in-out infinite}
+  .ux-panel.p1{animation-delay:0s}
+  .ux-panel.p2{animation-delay:3.2s}
+  .ux-panel.p3{animation-delay:6.4s}
+  .ux-dots{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);display:flex;gap:5px;z-index:5;background:rgba(15,21,18,.35);padding:4px 7px;border-radius:999px}
+  .ux-dots span{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);animation:ux-dot-active 9.6s ease-in-out infinite}
+  .ux-dots span:nth-child(1){animation-delay:0s}
+  .ux-dots span:nth-child(2){animation-delay:3.2s}
+  .ux-dots span:nth-child(3){animation-delay:6.4s}
+  @keyframes ux-panel-fade{0%{opacity:0}2%{opacity:1}30%{opacity:1}33%{opacity:0}100%{opacity:0}}
+  @keyframes ux-dot-active{0%{background:rgba(255,255,255,.5);transform:scale(1)}2%{background:#fff;transform:scale(1.3)}30%{background:#fff;transform:scale(1.3)}33%{background:rgba(255,255,255,.5);transform:scale(1)}100%{background:rgba(255,255,255,.5);transform:scale(1)}}
+
+  /* mini icons (no emoji/icon-font dependency) */
+  .ico-menu{display:inline-flex;flex-direction:column;gap:1.6px;width:9px;flex:none}
+  .ico-menu i{height:1.2px;background:currentColor;border-radius:1px}
+  .ico-search{width:8px;height:8px;border:1.2px solid var(--pg);border-radius:50%;position:relative;display:inline-block;flex:none}
+  .ico-search::after{content:'';position:absolute;width:3.5px;height:1.2px;background:var(--pg);right:-3.5px;bottom:-.5px;transform:rotate(45deg)}
+  .ico-scan{display:inline-flex;gap:1.2px;align-items:flex-end;height:9px}
+  .ico-scan i{width:1.3px;background:#fff;display:block}
+  .ico-scan i:nth-child(1){height:100%} .ico-scan i:nth-child(2){height:65%} .ico-scan i:nth-child(3){height:100%} .ico-scan i:nth-child(4){height:50%}
+  .ico-cart{width:11px;height:8px;background:#fff;clip-path:polygon(15% 0%,85% 0%,100% 100%,0% 100%);display:inline-block;flex:none}
+  .ico-tune{display:flex;flex-direction:column;gap:3px;width:14px;flex:none}
+  .ico-tune i{position:relative;height:1.4px;background:var(--slate2);border-radius:1px}
+  .ico-tune i::after{content:'';position:absolute;top:-2px;width:5px;height:5px;border-radius:50%;background:var(--slate2)}
+  .ico-tune i:nth-child(1)::after{left:60%}
+  .ico-tune i:nth-child(2)::after{left:15%}
+
+  /* Screen 1 — POS */
+  .real-pos{background:var(--pbg);display:flex;flex-direction:column;height:100%}
+  .rp-topbar{background:var(--pg);color:#fff;display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:.5rem;font-weight:700}
+  .rp-title{flex:1}
+  .rp-shift{background:rgba(255,255,255,.2);border-radius:6px;padding:2px 6px;font-size:.4rem;font-weight:600}
+  .rp-x{font-size:.55rem;line-height:1}
+  .rp-search{display:flex;align-items:center;gap:5px;background:#fff;margin:6px 8px 2px;padding:5px 7px;border-radius:8px;border:1px solid #e3e6e3}
+  .rp-search-ph{flex:1;font-size:.42rem;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rp-scanbtn{background:var(--pg);border-radius:6px;padding:4px 6px;display:flex;align-items:center}
+  .rp-rows{padding:2px 8px 0;display:flex;flex-direction:column;gap:5px}
+  .rp-row{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid #eceeec;border-radius:8px;padding:6px 7px;font-size:.44rem}
+  .rp-item-name{flex:1;font-weight:700;color:var(--ink2)}
+  .rp-stepper{color:var(--pgd);font-weight:700;font-size:.4rem}
+  .rp-row b{font-size:.46rem;color:var(--ink2)}
+  .rp-cartbar{margin-top:auto;background:var(--pgd);color:#fff;display:flex;align-items:center;gap:6px;padding:8px}
+  .rp-count{font-size:.44rem}
+  .rp-total{flex:1;text-align:right;padding-right:6px;font-size:.5rem;font-weight:800}
+  .rp-checkout{background:#fff;color:var(--pgd);font-weight:700;border-radius:6px;padding:4px 8px;font-size:.42rem}
+
+  /* Screen 2 — Inventory */
+  .real-inv{background:var(--ibg);display:flex;flex-direction:column;height:100%}
+  .ri-topbar{background:var(--pg);color:#fff;padding:6px 8px 8px}
+  .ri-title{font-size:.56rem;font-weight:800;display:block;margin-bottom:5px}
+  .ri-tabs{display:flex;gap:5px}
+  .ri-tab{display:flex;align-items:center;gap:3px;font-size:.4rem;font-weight:600;color:rgba(255,255,255,.75);padding:3px 6px;border-radius:8px}
+  .ri-tab.active{background:rgba(255,255,255,.18);color:#fff}
+  .ri-tab b{background:rgba(255,255,255,.22);border-radius:6px;padding:0 3px;font-size:.36rem;font-weight:700}
+  .ri-tab b.warn{background:#fff;color:var(--warn)}
+  .ri-searchrow{display:flex;align-items:center;gap:5px;background:#fff;margin:6px 8px;padding:5px 7px;border-radius:8px;border:1px solid #e6e6e6}
+  .ri-search-ph{flex:1;font-size:.42rem;color:var(--sub)}
+  .ri-metrics{display:flex;gap:5px;padding:0 8px;margin-bottom:6px}
+  .ri-mcard{flex:1;border-radius:8px;padding:5px 6px;font-size:.4rem;display:flex;flex-direction:column;gap:2px;border:1px solid}
+  .ri-mcard span{opacity:.85}
+  .ri-mcard b{font-size:.48rem}
+  .ri-mcard.slate{background:rgba(96,125,139,.08);border-color:rgba(96,125,139,.25);color:var(--slate2)}
+  .ri-mcard.green{background:rgba(26,122,74,.08);border-color:rgba(26,122,74,.25);color:var(--pg)}
+  .ri-mcard.warn{background:rgba(251,140,0,.08);border-color:rgba(251,140,0,.3);color:var(--warn)}
+  .ri-item{display:flex;gap:6px;margin:0 8px;background:#fff;border-radius:8px;padding:7px;border:1px solid #eee}
+  .ri-bar{width:3px;border-radius:2px;flex:none;background:var(--warn)}
+  .ri-item-body{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0}
+  .ri-item-top{display:flex;justify-content:space-between;align-items:flex-start;gap:5px}
+  .ri-sku{display:block;font-size:.34rem;color:var(--sub)}
+  .ri-name{display:block;font-size:.46rem;font-weight:700;color:var(--ink2)}
+  .ri-cat{display:block;font-size:.34rem;color:var(--sub)}
+  .ri-badge{font-size:.34rem;font-weight:700;padding:2px 5px;border-radius:5px;border:1px solid;white-space:nowrap;color:var(--warn);border-color:rgba(251,140,0,.4);background:rgba(251,140,0,.1)}
+  .ri-stats{display:flex;gap:6px}
+  .ri-stats span{flex:1;font-size:.32rem;color:var(--sub);display:flex;flex-direction:column;gap:1px}
+  .ri-stats b{font-size:.4rem;color:var(--ink2);font-weight:700}
+  .ri-stats b.warn{color:var(--warn)}
+  .ri-value{display:flex;justify-content:space-between;background:var(--pgl);border-radius:6px;padding:4px 6px;font-size:.36rem;color:#5c6b60}
+  .ri-value b{color:var(--pgd);font-size:.4rem}
+
+  /* Screen 3 — Brick Score (recommended actions) */
+  .real-score{background:#fff;padding:8px;display:flex;flex-direction:column;gap:7px;height:100%;overflow:hidden}
+  .rs-headline{background:linear-gradient(135deg,var(--pg),rgba(26,122,74,.78));border-radius:10px;padding:9px 10px;color:#fff}
+  .rs-hl-top{display:flex;justify-content:space-between;align-items:center;font-size:.46rem;font-weight:800;margin-bottom:6px}
+  .rs-pill{background:rgba(255,255,255,.22);border-radius:8px;padding:2px 6px;font-size:.34rem;font-weight:700}
+  .rs-hl-score{display:flex;align-items:flex-end;gap:3px;margin-bottom:4px}
+  .rs-hl-score b{font-size:1.2rem;font-weight:800;line-height:1}
+  .rs-hl-unit{font-size:.4rem;opacity:.75;margin-right:4px}
+  .rs-band{font-size:.5rem;font-weight:700;margin-left:2px}
+  .rs-trend{margin-left:auto;font-size:.38rem;font-weight:700;background:rgba(255,255,255,.18);border-radius:8px;padding:2px 5px}
+  .rs-hl-sub{font-size:.34rem;opacity:.85;line-height:1.35}
+  .rs-pillar{background:#fff;border:1px solid #eee;border-radius:10px;padding:8px 9px;box-shadow:0 4px 14px rgba(15,21,18,.05)}
+  .rs-pillar-top{display:flex;align-items:center;gap:4px;font-size:.42rem;font-weight:800;color:var(--ink2);margin-bottom:5px}
+  .rs-pill.grey{background:rgba(96,125,139,.12);color:var(--slate2)}
+  .rs-pill.grey2{background:rgba(0,0,0,.06);color:#6b736a}
+  .rs-pillar-score{display:flex;align-items:flex-end;gap:3px;margin-bottom:3px}
+  .rs-pillar-score b{font-size:.85rem;font-weight:800;color:var(--warn)}
+  .rs-pillar-unit{font-size:.34rem;color:var(--sub)}
+  .rs-trend2{margin-left:auto;font-size:.34rem;font-weight:700;color:var(--pg);background:rgba(26,122,74,.1);border-radius:8px;padding:2px 5px}
+  .rs-desc{font-size:.34rem;color:var(--sub);margin-bottom:4px}
+  .rs-rows{display:flex;flex-direction:column;gap:4px;margin-bottom:6px}
+  .rs-row{display:flex;align-items:center;gap:5px;font-size:.34rem;color:#5c6b60}
+  .rs-row>span{width:48px;flex:none}
+  .rs-bar{flex:1;height:5px;background:#eee;border-radius:999px;overflow:hidden}
+  .rs-bar i{display:block;height:100%;width:var(--w);background:var(--pg);border-radius:999px}
+  .rs-bar.warn i{background:var(--warn)}
+  .rs-row b{width:16px;text-align:right;font-weight:700;color:var(--ink2)}
+  .rs-row b.warn{color:var(--warn)}
+  .rs-opps-title{display:block;font-size:.36rem;font-weight:700;color:#6b736a;margin-bottom:3px}
+  .rs-opp{font-size:.34rem;color:var(--ink2);margin-bottom:2px}
+
+  /* ── Real screenshot swap-in: hidden by default, shown (and mockup hidden) once it loads ── */
+  .real-shot-img{display:none;max-width:100%;border-radius:22px;box-shadow:0 26px 56px rgba(15,21,18,.2)}
+  .real-shot-img.loaded{display:block}
+  .ux-shot.has-real-image .phone-mock{display:none}
+
+  /* ── Brick Fund phone mockup — real black/grey/white theme ── */
+  .phone-mock.fund-mock{--pg:#111315;--pgd:#000;--blue:#2196F3}
+  .bf-home{background:#fff;height:100%;display:flex;flex-direction:column;padding:9px}
+  .bf-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+  .bf-brand{font-family:Sora;font-weight:800;font-size:.5rem;color:#111}
+  .bf-chips{display:flex;gap:5px;margin-bottom:8px}
+  .bf-chip{font-size:.36rem;font-weight:600;padding:3px 8px;border-radius:999px;border:1px solid #e2e2e2;color:#777}
+  .bf-chip.active{background:#111;color:#fff;border-color:#111}
+  .bf-card{border-radius:10px;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,.1);flex:1;display:flex;flex-direction:column;border:1px solid #f0f0f0}
+  .bf-card-img{height:50px;background:linear-gradient(135deg,#d9d9d9,#ececec)}
+  .bf-card-body{padding:8px;display:flex;flex-direction:column;gap:4px;flex:1}
+  .bf-outlet{font-size:.46rem;font-weight:800;color:#111}
+  .bf-info{font-size:.34rem;color:#888}
+  .bf-progress{height:5px;border-radius:999px;background:#eee;overflow:hidden;margin-top:2px}
+  .bf-progress i{display:block;height:100%;width:var(--w);background:#111;border-radius:999px}
+  .bf-progrow{display:flex;justify-content:space-between;font-size:.34rem;color:#333}
+  .bf-progrow b{font-weight:800}
+  .bf-stats{display:flex;flex-direction:column;gap:2px;margin-top:2px}
+  .bf-stat{display:flex;justify-content:space-between;font-size:.32rem;color:#666}
+  .bf-stat b{color:#111;font-weight:700}
+  .bf-backers{margin-top:auto;font-size:.32rem;color:#999}
+
+  .bf-detail{background:#fff;height:100%;display:flex;flex-direction:column;padding:9px;gap:6px}
+  .bf-hero{height:62px;border-radius:8px;background:linear-gradient(135deg,#d9d9d9,#ececec)}
+  .bf-detail-info{font-size:.38rem;color:#333;margin:0}
+  .bf-metrics{background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:7px 8px;display:flex;flex-direction:column;gap:3px}
+  .bf-mrow{display:flex;justify-content:space-between;font-size:.34rem;color:#333}
+  .bf-mrow b{font-weight:700;color:#111}
+  .bf-funded{font-size:.3rem;color:#999;margin-top:2px}
+  .bf-cta{background:#111;color:#fff;text-align:center;font-size:.4rem;font-weight:700;border-radius:8px;padding:7px 0}
+  .bf-cta-outline{border:1px solid #111;color:#111;text-align:center;font-size:.38rem;font-weight:700;border-radius:8px;padding:6px 0}
+
+  .bf-supply{background:#f5f5f5;height:100%;display:flex;flex-direction:column}
+  .bf-supply-top{background:#111;color:#fff;padding:7px 8px 8px}
+  .bf-supply-title{font-size:.48rem;font-weight:800;display:block;margin-bottom:5px}
+  .bf-tabs{display:flex;gap:6px}
+  .bf-tab{display:flex;align-items:center;gap:3px;font-size:.34rem;font-weight:600;color:rgba(255,255,255,.7)}
+  .bf-tab.active{color:#fff}
+  .bf-tab b{background:rgba(255,255,255,.2);border-radius:6px;padding:0 4px;font-size:.32rem}
+  .bf-tab b.blue{background:#2196F3;color:#fff}
+  .bf-tab b.warn{background:var(--warn);color:#fff}
+  .bf-metrics-row{display:flex;gap:5px;padding:6px 8px}
+  .bf-mcard{flex:1;border-radius:8px;padding:5px 6px;font-size:.32rem;display:flex;flex-direction:column;gap:2px;border:1px solid #e2e2e2;background:#fff}
+  .bf-mcard b{font-size:.42rem;color:#111}
+  .bf-mcard.warn{border-color:rgba(251,140,0,.35);background:rgba(251,140,0,.06)}
+  .bf-mcard.blue{border-color:rgba(33,150,243,.35);background:rgba(33,150,243,.06)}
+  .bf-template{margin:0 8px;background:#fff;border-radius:10px;border:1px solid #eee;padding:8px}
+  .bf-template-top{display:flex;gap:7px;align-items:flex-start}
+  .bf-template-icon{width:16px;height:16px;border-radius:5px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:.4rem;color:#111;flex:none}
+  .bf-template-name{font-size:.4rem;font-weight:700;color:#111;display:block}
+  .bf-template-chips{display:flex;gap:5px;margin:3px 0}
+  .bf-template-chips span{font-size:.28rem;font-weight:600;color:#888}
+  .bf-template-chips span.blue{color:#2196F3}
+  .bf-template-chips span.warn{color:var(--warn)}
+  .bf-amounts{display:flex;gap:8px;font-size:.28rem;color:#999}
+  .bf-amounts b{color:#111;font-weight:700}
+
+
   /* ── OUTCOMES ( outcomes, not module names) ───── */
   .outcomes{background:var(--mist)}
   .outcomes .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:52px}
@@ -189,6 +393,13 @@
   @media(prefers-reduced-motion:reduce){
     .reveal,.eco-node{opacity:1;transform:none;transition:none}
     .eco-rail .fill{transition:none}
+    .app-highlight{animation:none}
+    .ah-dot{animation:none}
+    .ah-wrap,.ah-toast{transition:none}
+    .ux-panel{animation:none;opacity:0}
+    .ux-panel.p1{opacity:1}
+    .ux-dots span{animation:none;background:rgba(255,255,255,.5)}
+    .ux-dots span:nth-child(1){background:#fff}
     html{scroll-behavior:auto}
   }
 </style>
@@ -221,7 +432,24 @@
           </div>
         </div>
         <div class="hero-photo">
-          <img src="images/hero_merchant.jpg" alt="A business owner using Brick" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Business owner photo</div>'">
+          <img src="images/hero_merchant.jpg" alt="A business owner using Brick" onerror="this.parentElement.insertAdjacentHTML('afterbegin','<div class=&quot;ph&quot;>Business owner photo</div>')">
+          <div class="ah-toast" id="ahToast"><span class="ah-check">✓</span> Order synced to inventory</div>
+          <div class="ah-wrap" id="appHighlight">
+            <div class="app-highlight">
+              <div class="ah-top"><span class="ah-dot"></span>Brick One · Live</div>
+              <div class="ah-figure">
+                <span class="ah-num" id="ahNum" data-target="128400">₦0</span>
+                <span class="ah-label">Today's sales</span>
+              </div>
+              <div class="ah-bars">
+                <span style="--h:38%"></span>
+                <span style="--h:58%"></span>
+                <span style="--h:46%"></span>
+                <span style="--h:82%"></span>
+                <span style="--h:64%"></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -281,9 +509,118 @@
           <span class="tag">Brick One</span>
           <h3 class="h-md">Source it, run it — all in one app.</h3>
           <p>Order from verified suppliers right inside Brick One, then manage that stock through sales, inventory, and finance. No separate marketplace app, no phone tag — just one place for your whole day, online or off.</p>
-          <ul><li>Verified suppliers</li><li>Clear pricing</li><li>Inventory</li><li>Point of sale</li><li>Finance</li><li>Reporting</li></ul>
+          <ul><li>Verified suppliers</li><li>Clear pricing</li><li>Inventory</li><li>Point of sale</li><li>Finance</li><li>Brick Score</li></ul>
         </div>
-        <div class="shot"><img src="images/brickone_shot.jpg" alt="Brick One" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick One</div>'"></div>
+        <div class="shot ux-shot">
+          <img class="real-shot-img" src="images/brickone_shot.jpg" alt="Brick One"
+               onload="this.classList.add('loaded');this.closest('.ux-shot').classList.add('has-real-image')"
+               onerror="this.remove()">
+          <div class="phone-mock">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="ux-panels">
+
+                <!-- Screen 1 — POS (pos_home_screen.dart) -->
+                <div class="ux-panel p1">
+                  <div class="real-pos">
+                    <div class="rp-topbar">
+                      <span class="ico-menu"><i></i><i></i><i></i></span>
+                      <span class="rp-title">BrickOne POS</span>
+                      <span class="rp-shift">Shift #4</span>
+                      <span class="rp-x">×</span>
+                    </div>
+                    <div class="rp-search">
+                      <span class="ico-search"></span>
+                      <span class="rp-search-ph">Search products or scan barcode…</span>
+                      <span class="rp-scanbtn"><span class="ico-scan"><i></i><i></i><i></i><i></i></span></span>
+                    </div>
+                    <div class="rp-rows">
+                      <div class="rp-row"><span class="rp-item-name">Rice — 50kg bag</span><span class="rp-stepper">− 2 +</span><b>₦84,000</b></div>
+                      <div class="rp-row"><span class="rp-item-name">Cooking Oil 25L</span><span class="rp-stepper">− 1 +</span><b>₦38,500</b></div>
+                    </div>
+                    <div class="rp-cartbar">
+                      <span class="ico-cart"></span>
+                      <span class="rp-count">2 items</span>
+                      <b class="rp-total">₦122,500</b>
+                      <span class="rp-checkout">Checkout</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Screen 2 — Inventory (items_screen.dart) -->
+                <div class="ux-panel p2">
+                  <div class="real-inv">
+                    <div class="ri-topbar">
+                      <span class="ri-title">Inventory</span>
+                      <span class="ri-tabs">
+                        <span class="ri-tab active">All <b>128</b></span>
+                        <span class="ri-tab">Low <b class="warn">2</b></span>
+                        <span class="ri-tab">Out <b>0</b></span>
+                      </span>
+                    </div>
+                    <div class="ri-searchrow">
+                      <span class="ico-search"></span>
+                      <span class="ri-search-ph">Search or scan a product</span>
+                      <span class="ico-tune"><i></i><i></i></span>
+                    </div>
+                    <div class="ri-metrics">
+                      <div class="ri-mcard slate"><span>Total Items</span><b>128</b></div>
+                      <div class="ri-mcard green"><span>Retail Value</span><b>₦1.4m</b></div>
+                      <div class="ri-mcard warn"><span>Low Stock</span><b>2</b></div>
+                    </div>
+                    <div class="ri-item">
+                      <span class="ri-bar"></span>
+                      <div class="ri-item-body">
+                        <div class="ri-item-top">
+                          <div>
+                            <span class="ri-sku">SKU: COOK-025</span>
+                            <span class="ri-name">Cooking Oil 25L</span>
+                            <span class="ri-cat">Pantry</span>
+                          </div>
+                          <span class="ri-badge">Low stock</span>
+                        </div>
+                        <div class="ri-stats">
+                          <span>Qty<b>6</b></span>
+                          <span>Cost<b>₦32,000</b></span>
+                          <span>Price<b>₦38,500</b></span>
+                          <span>Margin<b class="warn">17%</b></span>
+                        </div>
+                        <div class="ri-value"><span>Stock retail value</span><b>₦231,000</b></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Screen 3 — Brick Score (brick_score_card.dart, recommended actions) -->
+                <div class="ux-panel p3">
+                  <div class="real-score">
+                    <div class="rs-headline">
+                      <div class="rs-hl-top"><span>✓ Brick Score</span><span class="rs-pill">Established</span></div>
+                      <div class="rs-hl-score"><b>84</b><span class="rs-hl-unit">/100</span><span class="rs-band">Strong</span><span class="rs-trend">↑ +4</span></div>
+                      <div class="rs-hl-sub">Overall confidence 82% · a weighted read across your pillars.</div>
+                    </div>
+                    <div class="rs-pillar">
+                      <div class="rs-pillar-top"><span>Operations</span><span class="rs-pill grey">Established</span><span class="rs-pill grey2">86% conf.</span></div>
+                      <div class="rs-pillar-score"><b>68</b><span class="rs-pillar-unit">/100</span><span class="rs-trend2">↑ +3 vs last period</span></div>
+                      <div class="rs-desc">Based on your recent stock counts, waste and sales.</div>
+                      <div class="rs-rows">
+                        <div class="rs-row"><span>Stock accuracy</span><div class="rs-bar"><i style="--w:84%"></i></div><b>84</b></div>
+                        <div class="rs-row"><span>Waste rate</span><div class="rs-bar warn"><i style="--w:58%"></i></div><b class="warn">58</b></div>
+                      </div>
+                      <div class="rs-opps">
+                        <span class="rs-opps-title">Biggest opportunities</span>
+                        <div class="rs-opp">→ Recount stock weekly (about +3)</div>
+                        <div class="rs-opp">→ Reduce waste on perishables (about +6)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="ux-dots"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -295,7 +632,97 @@
           <p>Sign up as a funder and finance inventory for outlets and businesses on Brick. Choose what to fund, follow it as real stock moves and sells, and get transparent, tracked returns every step of the way.</p>
           <ul><li>Fund outlets</li><li>Finance inventory</li><li>Track in real time</li><li>Transparent returns</li></ul>
         </div>
-        <div class="shot"><img src="images/brickfund_shot.jpg" alt="Brick Fund" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick Fund</div>'"></div>
+        <div class="shot ux-shot">
+          <img class="real-shot-img" src="images/brickfund_shot.jpg" alt="Brick Fund"
+               onload="this.classList.add('loaded');this.closest('.ux-shot').classList.add('has-real-image')"
+               onerror="this.remove()">
+          <div class="phone-mock fund-mock">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="ux-panels">
+
+                <!-- Screen 1 — Home / offer list (home_page.dart) -->
+                <div class="ux-panel p1">
+                  <div class="bf-home">
+                    <div class="bf-topbar">
+                      <span class="bf-brand">Brick Fund</span>
+                      <span class="ico-search"></span>
+                    </div>
+                    <div class="bf-chips">
+                      <span class="bf-chip active">All</span>
+                      <span class="bf-chip">Distribution</span>
+                      <span class="bf-chip">Restock</span>
+                    </div>
+                    <div class="bf-card">
+                      <div class="bf-card-img"></div>
+                      <div class="bf-card-body">
+                        <span class="bf-outlet">Amina Foods</span>
+                        <span class="bf-info">FMCG opportunity · 3rd listing</span>
+                        <div class="bf-progress"><i style="--w:62%"></i></div>
+                        <div class="bf-progrow"><span>₦620,000 raised</span><b>62%</b></div>
+                        <div class="bf-stats">
+                          <div class="bf-stat"><span>Purchase target</span><b>₦1,000,000</b></div>
+                          <div class="bf-stat"><span>Projected return</span><b>18% Margin</b></div>
+                          <div class="bf-stat"><span>Expected duration</span><b>3 Cycles</b></div>
+                        </div>
+                        <span class="bf-backers">24 backers</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Screen 2 — Offer detail (detail_page.dart) -->
+                <div class="ux-panel p2">
+                  <div class="bf-detail">
+                    <div class="bf-hero"></div>
+                    <p class="bf-detail-info">FMCG opportunity funding · 24 backers already in</p>
+                    <div class="bf-metrics">
+                      <div class="bf-mrow"><span>Projected return:</span><b>18% Margin</b></div>
+                      <div class="bf-mrow"><span>Expected duration:</span><b>3 Cycles</b></div>
+                      <div class="bf-mrow"><span>Purchase target:</span><b>₦1,000,000</b></div>
+                      <div class="bf-mrow"><span>Raised amount:</span><b>₦620,000</b></div>
+                      <div class="bf-progress"><i style="--w:62%"></i></div>
+                      <span class="bf-funded">62% funded</span>
+                    </div>
+                    <div class="bf-cta">Fund It Now</div>
+                    <div class="bf-cta-outline">Add to Watchlist</div>
+                  </div>
+                </div>
+
+                <!-- Screen 3 — Supply Cycles (supply_page.dart) -->
+                <div class="ux-panel p3">
+                  <div class="bf-supply">
+                    <div class="bf-supply-top">
+                      <span class="bf-supply-title">Supply Cycles</span>
+                      <div class="bf-tabs">
+                        <span class="bf-tab active">All <b>12</b></span>
+                        <span class="bf-tab">Active <b class="blue">5</b></span>
+                        <span class="bf-tab">Pending <b class="warn">2</b></span>
+                      </div>
+                    </div>
+                    <div class="bf-metrics-row">
+                      <div class="bf-mcard warn"><span>Pending Payouts</span><b>₦84,000</b></div>
+                      <div class="bf-mcard"><span>Month's Gain</span><b>₦142,000</b></div>
+                      <div class="bf-mcard blue"><span>Active Cycles</span><b>5</b></div>
+                    </div>
+                    <div class="bf-template">
+                      <div class="bf-template-top">
+                        <span class="bf-template-icon">↻</span>
+                        <div>
+                          <span class="bf-template-name">Distribution Cycle</span>
+                          <div class="bf-template-chips"><span>5 cycles</span><span class="blue">3 active</span><span class="warn">1 pending</span></div>
+                          <div class="bf-amounts"><span>Funded: <b>₦2.1m</b></span><span>Repay: <b>₦2.4m</b></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="ux-dots"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -358,7 +785,7 @@
 
         <div class="app-card">
           <div class="app-name">Brick Fund</div>
-          <p class="app-line">Fund and finance inventory for outlets and businesses.</p>
+          <p class="app-line">Sign up to fund and finance inventory for outlets and businesses.</p>
           <div class="stores">
             <a href="#"><img src="images/google-play-badge.png" alt="Get Brick Fund on Google Play"></a>
             <a href="#"><img src="images/app-store-badge.png" alt="Download Brick Fund on the App Store"></a>
@@ -396,6 +823,35 @@
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   },{threshold:.14});
   els.forEach(function(e){ io.observe(e); });
+})();
+
+/* ── App highlight: reveal, bars, toast, count-up ─────────────── */
+(function(){
+  var wrap = document.getElementById('appHighlight');
+  var toast = document.getElementById('ahToast');
+  var num = document.getElementById('ahNum');
+  if(!wrap) return;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function countUp(el,target,duration){
+    if(reduced){ el.textContent = '₦'+target.toLocaleString(); return; }
+    var start=null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/duration,1);
+      var eased = 1-Math.pow(1-p,3);
+      el.textContent = '₦'+Math.floor(eased*target).toLocaleString();
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function run(){
+    wrap.classList.add('in');
+    if(num) countUp(num, parseInt(num.dataset.target,10) || 0, 1300);
+    setTimeout(function(){ toast && toast.classList.add('in'); }, reduced ? 0 : 950);
+  }
+  setTimeout(run, 350);
 })();
 
 /* ── Signature ecosystem: rail fills, nodes light up in sequence ── */
