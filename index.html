@@ -345,7 +345,27 @@
   .bf-amounts b{color:#111;font-weight:700}
 
 
-  /* ── OUTCOMES ( outcomes, not module names) ───── */
+  /* ── PRODUCTS: Square-style accordion + sticky visual (scales to N products) ── */
+  .pd-layout{display:grid;grid-template-columns:.92fr 1.08fr;gap:56px;align-items:start;margin-top:52px}
+  .pd-list{display:flex;flex-direction:column}
+  .pd-item{border-bottom:1px solid var(--line)}
+  .pd-item:first-child{border-top:1px solid var(--line)}
+  .pd-item-head{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:space-between;width:100%;padding:22px 4px;font-family:Sora;font-weight:700;font-size:1.18rem;color:var(--ink)}
+  .pd-toggle{font-family:Sora;font-weight:400;font-size:1.5rem;color:var(--slate);line-height:1}
+  .pd-item-body-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+  .pd-item.open .pd-item-body-wrap{grid-template-rows:1fr}
+  .pd-item-body{overflow:hidden}
+  .pd-item-body p{margin:0 0 14px;padding:0 4px;color:var(--slate);font-size:1rem;max-width:44ch}
+  .pd-tags{list-style:none;padding:0 4px;margin:0 0 22px;display:flex;flex-wrap:wrap;gap:8px 10px}
+  .pd-tags li{font-size:.85rem;font-weight:600;background:var(--mist);padding:7px 14px;border-radius:999px}
+  .pd-visual{position:sticky;top:110px;display:flex;align-items:center;justify-content:center;min-height:420px}
+  .pd-visual .shot.ux-shot{display:none;width:100%}
+  .pd-visual .shot.ux-shot.active{display:flex;align-items:center;justify-content:center}
+  @media(max-width:820px){
+    .pd-layout{grid-template-columns:1fr;gap:24px}
+    .pd-visual{position:relative;top:0;order:-1;min-height:320px}
+  }
+
   .outcomes{background:var(--mist)}
   .outcomes .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:52px}
   .oc{background:var(--paper);padding:36px 30px}
@@ -504,223 +524,255 @@
 
     <!-- ── PRODUCT CHAPTERS ──────────────────────────── -->
     <section id="products">
-      <div class="wrap chapter reveal">
-        <div class="copy">
-          <span class="tag">Brick One</span>
-          <h3 class="h-md">Source it, run it — all in one app.</h3>
-          <p>Order from verified suppliers right inside Brick One, then manage that stock through sales, inventory, and finance. No separate marketplace app, no phone tag — just one place for your whole day, online or off.</p>
-          <ul><li>Verified suppliers</li><li>Clear pricing</li><li>Inventory</li><li>Point of sale</li><li>Finance</li><li>Brick Score</li></ul>
+      <div class="wrap">
+        <div class="reveal">
+          <div class="eyebrow">One app, every part of your business</div>
+          <h2 class="h-lg">See your whole business click into place.</h2>
         </div>
-        <div class="shot ux-shot">
-          <img class="real-shot-img" src="images/brickone_shot.jpg" alt="Brick One"
-               onload="this.classList.add('loaded');this.closest('.ux-shot').classList.add('has-real-image')"
-               onerror="this.remove()">
-          <div class="phone-mock">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="ux-panels">
 
-                <!-- Screen 1 — POS (pos_home_screen.dart) -->
-                <div class="ux-panel p1">
-                  <div class="real-pos">
-                    <div class="rp-topbar">
-                      <span class="ico-menu"><i></i><i></i><i></i></span>
-                      <span class="rp-title">BrickOne POS</span>
-                      <span class="rp-shift">Shift #4</span>
-                      <span class="rp-x">×</span>
-                    </div>
-                    <div class="rp-search">
-                      <span class="ico-search"></span>
-                      <span class="rp-search-ph">Search products or scan barcode…</span>
-                      <span class="rp-scanbtn"><span class="ico-scan"><i></i><i></i><i></i><i></i></span></span>
-                    </div>
-                    <div class="rp-rows">
-                      <div class="rp-row"><span class="rp-item-name">Rice — 50kg bag</span><span class="rp-stepper">− 2 +</span><b>₦84,000</b></div>
-                      <div class="rp-row"><span class="rp-item-name">Cooking Oil 25L</span><span class="rp-stepper">− 1 +</span><b>₦38,500</b></div>
-                    </div>
-                    <div class="rp-cartbar">
-                      <span class="ico-cart"></span>
-                      <span class="rp-count">2 items</span>
-                      <b class="rp-total">₦122,500</b>
-                      <span class="rp-checkout">Checkout</span>
-                    </div>
-                  </div>
+        <div class="pd-layout reveal">
+          <div class="pd-list">
+
+            <div class="pd-item open" data-target="pos">
+              <button class="pd-item-head" type="button">
+                <span>Brick One</span>
+                <span class="pd-toggle">−</span>
+              </button>
+              <div class="pd-item-body-wrap">
+                <div class="pd-item-body">
+                  <p>Order from verified suppliers right inside Brick One, then manage that stock through sales, inventory, and finance. No separate marketplace app, no phone tag — just one place for your whole day, online or off.</p>
+                  <ul class="pd-tags"><li>Verified suppliers</li><li>Clear pricing</li><li>Inventory</li><li>Point of sale</li><li>Finance</li><li>Brick Score</li></ul>
                 </div>
-
-                <!-- Screen 2 — Inventory (items_screen.dart) -->
-                <div class="ux-panel p2">
-                  <div class="real-inv">
-                    <div class="ri-topbar">
-                      <span class="ri-title">Inventory</span>
-                      <span class="ri-tabs">
-                        <span class="ri-tab active">All <b>128</b></span>
-                        <span class="ri-tab">Low <b class="warn">2</b></span>
-                        <span class="ri-tab">Out <b>0</b></span>
-                      </span>
-                    </div>
-                    <div class="ri-searchrow">
-                      <span class="ico-search"></span>
-                      <span class="ri-search-ph">Search or scan a product</span>
-                      <span class="ico-tune"><i></i><i></i></span>
-                    </div>
-                    <div class="ri-metrics">
-                      <div class="ri-mcard slate"><span>Total Items</span><b>128</b></div>
-                      <div class="ri-mcard green"><span>Retail Value</span><b>₦1.4m</b></div>
-                      <div class="ri-mcard warn"><span>Low Stock</span><b>2</b></div>
-                    </div>
-                    <div class="ri-item">
-                      <span class="ri-bar"></span>
-                      <div class="ri-item-body">
-                        <div class="ri-item-top">
-                          <div>
-                            <span class="ri-sku">SKU: COOK-025</span>
-                            <span class="ri-name">Cooking Oil 25L</span>
-                            <span class="ri-cat">Pantry</span>
-                          </div>
-                          <span class="ri-badge">Low stock</span>
-                        </div>
-                        <div class="ri-stats">
-                          <span>Qty<b>6</b></span>
-                          <span>Cost<b>₦32,000</b></span>
-                          <span>Price<b>₦38,500</b></span>
-                          <span>Margin<b class="warn">17%</b></span>
-                        </div>
-                        <div class="ri-value"><span>Stock retail value</span><b>₦231,000</b></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Screen 3 — Brick Score (brick_score_card.dart, recommended actions) -->
-                <div class="ux-panel p3">
-                  <div class="real-score">
-                    <div class="rs-headline">
-                      <div class="rs-hl-top"><span>✓ Brick Score</span><span class="rs-pill">Established</span></div>
-                      <div class="rs-hl-score"><b>84</b><span class="rs-hl-unit">/100</span><span class="rs-band">Strong</span><span class="rs-trend">↑ +4</span></div>
-                      <div class="rs-hl-sub">Overall confidence 82% · a weighted read across your pillars.</div>
-                    </div>
-                    <div class="rs-pillar">
-                      <div class="rs-pillar-top"><span>Operations</span><span class="rs-pill grey">Established</span><span class="rs-pill grey2">86% conf.</span></div>
-                      <div class="rs-pillar-score"><b>68</b><span class="rs-pillar-unit">/100</span><span class="rs-trend2">↑ +3 vs last period</span></div>
-                      <div class="rs-desc">Based on your recent stock counts, waste and sales.</div>
-                      <div class="rs-rows">
-                        <div class="rs-row"><span>Stock accuracy</span><div class="rs-bar"><i style="--w:84%"></i></div><b>84</b></div>
-                        <div class="rs-row"><span>Waste rate</span><div class="rs-bar warn"><i style="--w:58%"></i></div><b class="warn">58</b></div>
-                      </div>
-                      <div class="rs-opps">
-                        <span class="rs-opps-title">Biggest opportunities</span>
-                        <div class="rs-opp">→ Recount stock weekly (about +3)</div>
-                        <div class="rs-opp">→ Reduce waste on perishables (about +6)</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
-              <div class="ux-dots"><span></span><span></span><span></span></div>
             </div>
+
+            <div class="pd-item" data-target="fund">
+              <button class="pd-item-head" type="button">
+                <span>Brick Fund</span>
+                <span class="pd-toggle">+</span>
+              </button>
+              <div class="pd-item-body-wrap">
+                <div class="pd-item-body">
+                  <p>Sign up as a funder and finance inventory for outlets and businesses on Brick. Choose what to fund, follow it as real stock moves and sells, and get transparent, tracked returns every step of the way.</p>
+                  <ul class="pd-tags"><li>Fund outlets</li><li>Finance inventory</li><li>Track in real time</li><li>Transparent returns</li></ul>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="snug">
-      <div class="wrap chapter flip reveal">
-        <div class="copy">
-          <span class="tag">Brick Fund</span>
-          <h3 class="h-md">Fund inventory. Back real businesses.</h3>
-          <p>Sign up as a funder and finance inventory for outlets and businesses on Brick. Choose what to fund, follow it as real stock moves and sells, and get transparent, tracked returns every step of the way.</p>
-          <ul><li>Fund outlets</li><li>Finance inventory</li><li>Track in real time</li><li>Transparent returns</li></ul>
-        </div>
-        <div class="shot ux-shot">
-          <img class="real-shot-img" src="images/brickfund_shot.jpg" alt="Brick Fund"
-               onload="this.classList.add('loaded');this.closest('.ux-shot').classList.add('has-real-image')"
-               onerror="this.remove()">
-          <div class="phone-mock fund-mock">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="ux-panels">
+          <div class="pd-visual">
 
-                <!-- Screen 1 — Home / offer list (home_page.dart) -->
-                <div class="ux-panel p1">
-                  <div class="bf-home">
-                    <div class="bf-topbar">
-                      <span class="bf-brand">Brick Fund</span>
-                      <span class="ico-search"></span>
-                    </div>
-                    <div class="bf-chips">
-                      <span class="bf-chip active">All</span>
-                      <span class="bf-chip">Distribution</span>
-                      <span class="bf-chip">Restock</span>
-                    </div>
-                    <div class="bf-card">
-                      <div class="bf-card-img"></div>
-                      <div class="bf-card-body">
-                        <span class="bf-outlet">Amina Foods</span>
-                        <span class="bf-info">FMCG opportunity · 3rd listing</span>
-                        <div class="bf-progress"><i style="--w:62%"></i></div>
-                        <div class="bf-progrow"><span>₦620,000 raised</span><b>62%</b></div>
-                        <div class="bf-stats">
-                          <div class="bf-stat"><span>Purchase target</span><b>₦1,000,000</b></div>
-                          <div class="bf-stat"><span>Projected return</span><b>18% Margin</b></div>
-                          <div class="bf-stat"><span>Expected duration</span><b>3 Cycles</b></div>
+            <!-- Brick One visual -->
+            <div class="shot ux-shot active" data-visual="pos">
+              <img class="real-shot-img" src="images/brickone_shot.jpg" alt="Brick One"
+                   onload="this.classList.add('loaded');this.closest('.ux-shot').classList.add('has-real-image')"
+                   onerror="this.remove()">
+              <div class="phone-mock">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                  <div class="ux-panels">
+
+                    <!-- Screen 1 — POS (pos_home_screen.dart) -->
+                    <div class="ux-panel p1">
+                      <div class="real-pos">
+                        <div class="rp-topbar">
+                          <span class="ico-menu"><i></i><i></i><i></i></span>
+                          <span class="rp-title">BrickOne POS</span>
+                          <span class="rp-shift">Shift #4</span>
+                          <span class="rp-x">×</span>
                         </div>
-                        <span class="bf-backers">24 backers</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Screen 2 — Offer detail (detail_page.dart) -->
-                <div class="ux-panel p2">
-                  <div class="bf-detail">
-                    <div class="bf-hero"></div>
-                    <p class="bf-detail-info">FMCG opportunity funding · 24 backers already in</p>
-                    <div class="bf-metrics">
-                      <div class="bf-mrow"><span>Projected return:</span><b>18% Margin</b></div>
-                      <div class="bf-mrow"><span>Expected duration:</span><b>3 Cycles</b></div>
-                      <div class="bf-mrow"><span>Purchase target:</span><b>₦1,000,000</b></div>
-                      <div class="bf-mrow"><span>Raised amount:</span><b>₦620,000</b></div>
-                      <div class="bf-progress"><i style="--w:62%"></i></div>
-                      <span class="bf-funded">62% funded</span>
-                    </div>
-                    <div class="bf-cta">Fund It Now</div>
-                    <div class="bf-cta-outline">Add to Watchlist</div>
-                  </div>
-                </div>
-
-                <!-- Screen 3 — Supply Cycles (supply_page.dart) -->
-                <div class="ux-panel p3">
-                  <div class="bf-supply">
-                    <div class="bf-supply-top">
-                      <span class="bf-supply-title">Supply Cycles</span>
-                      <div class="bf-tabs">
-                        <span class="bf-tab active">All <b>12</b></span>
-                        <span class="bf-tab">Active <b class="blue">5</b></span>
-                        <span class="bf-tab">Pending <b class="warn">2</b></span>
-                      </div>
-                    </div>
-                    <div class="bf-metrics-row">
-                      <div class="bf-mcard warn"><span>Pending Payouts</span><b>₦84,000</b></div>
-                      <div class="bf-mcard"><span>Month's Gain</span><b>₦142,000</b></div>
-                      <div class="bf-mcard blue"><span>Active Cycles</span><b>5</b></div>
-                    </div>
-                    <div class="bf-template">
-                      <div class="bf-template-top">
-                        <span class="bf-template-icon">↻</span>
-                        <div>
-                          <span class="bf-template-name">Distribution Cycle</span>
-                          <div class="bf-template-chips"><span>5 cycles</span><span class="blue">3 active</span><span class="warn">1 pending</span></div>
-                          <div class="bf-amounts"><span>Funded: <b>₦2.1m</b></span><span>Repay: <b>₦2.4m</b></span></div>
+                        <div class="rp-search">
+                          <span class="ico-search"></span>
+                          <span class="rp-search-ph">Search products or scan barcode…</span>
+                          <span class="rp-scanbtn"><span class="ico-scan"><i></i><i></i><i></i><i></i></span></span>
+                        </div>
+                        <div class="rp-rows">
+                          <div class="rp-row"><span class="rp-item-name">Rice — 50kg bag</span><span class="rp-stepper">− 2 +</span><b>₦84,000</b></div>
+                          <div class="rp-row"><span class="rp-item-name">Cooking Oil 25L</span><span class="rp-stepper">− 1 +</span><b>₦38,500</b></div>
+                        </div>
+                        <div class="rp-cartbar">
+                          <span class="ico-cart"></span>
+                          <span class="rp-count">2 items</span>
+                          <b class="rp-total">₦122,500</b>
+                          <span class="rp-checkout">Checkout</span>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
+                    <!-- Screen 2 — Inventory (items_screen.dart) -->
+                    <div class="ux-panel p2">
+                      <div class="real-inv">
+                        <div class="ri-topbar">
+                          <span class="ri-title">Inventory</span>
+                          <span class="ri-tabs">
+                            <span class="ri-tab active">All <b>128</b></span>
+                            <span class="ri-tab">Low <b class="warn">2</b></span>
+                            <span class="ri-tab">Out <b>0</b></span>
+                          </span>
+                        </div>
+                        <div class="ri-searchrow">
+                          <span class="ico-search"></span>
+                          <span class="ri-search-ph">Search or scan a product</span>
+                          <span class="ico-tune"><i></i><i></i></span>
+                        </div>
+                        <div class="ri-metrics">
+                          <div class="ri-mcard slate"><span>Total Items</span><b>128</b></div>
+                          <div class="ri-mcard green"><span>Retail Value</span><b>₦1.4m</b></div>
+                          <div class="ri-mcard warn"><span>Low Stock</span><b>2</b></div>
+                        </div>
+                        <div class="ri-item">
+                          <span class="ri-bar"></span>
+                          <div class="ri-item-body">
+                            <div class="ri-item-top">
+                              <div>
+                                <span class="ri-sku">SKU: COOK-025</span>
+                                <span class="ri-name">Cooking Oil 25L</span>
+                                <span class="ri-cat">Pantry</span>
+                              </div>
+                              <span class="ri-badge">Low stock</span>
+                            </div>
+                            <div class="ri-stats">
+                              <span>Qty<b>6</b></span>
+                              <span>Cost<b>₦32,000</b></span>
+                              <span>Price<b>₦38,500</b></span>
+                              <span>Margin<b class="warn">17%</b></span>
+                            </div>
+                            <div class="ri-value"><span>Stock retail value</span><b>₦231,000</b></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Screen 3 — Brick Score (brick_score_card.dart, recommended actions) -->
+                    <div class="ux-panel p3">
+                      <div class="real-score">
+                        <div class="rs-headline">
+                          <div class="rs-hl-top"><span>✓ Brick Score</span><span class="rs-pill">Established</span></div>
+                          <div class="rs-hl-score"><b>84</b><span class="rs-hl-unit">/100</span><span class="rs-band">Strong</span><span class="rs-trend">↑ +4</span></div>
+                          <div class="rs-hl-sub">Overall confidence 82% · a weighted read across your pillars.</div>
+                        </div>
+                        <div class="rs-pillar">
+                          <div class="rs-pillar-top"><span>Operations</span><span class="rs-pill grey">Established</span><span class="rs-pill grey2">86% conf.</span></div>
+                          <div class="rs-pillar-score"><b>68</b><span class="rs-pillar-unit">/100</span><span class="rs-trend2">↑ +3 vs last period</span></div>
+                          <div class="rs-desc">Based on your recent stock counts, waste and sales.</div>
+                          <div class="rs-rows">
+                            <div class="rs-row"><span>Stock accuracy</span><div class="rs-bar"><i style="--w:84%"></i></div><b>84</b></div>
+                            <div class="rs-row"><span>Waste rate</span><div class="rs-bar warn"><i style="--w:58%"></i></div><b class="warn">58</b></div>
+                          </div>
+                          <div class="rs-opps">
+                            <span class="rs-opps-title">Biggest opportunities</span>
+                            <div class="rs-opp">→ Recount stock weekly (about +3)</div>
+                            <div class="rs-opp">→ Reduce waste on perishables (about +6)</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="ux-dots"><span></span><span></span><span></span></div>
+                </div>
               </div>
-              <div class="ux-dots"><span></span><span></span><span></span></div>
             </div>
+
+            <!-- Brick Fund visual -->
+            <div class="shot ux-shot" data-visual="fund">
+              <img class="real-shot-img" src="images/brickfund_shot.jpg" alt="Brick Fund"
+                   onload="this.classList.add('loaded');this.closest('.ux-shot').classList.add('has-real-image')"
+                   onerror="this.remove()">
+              <div class="phone-mock fund-mock">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                  <div class="ux-panels">
+
+                    <!-- Screen 1 — Home / offer list (home_page.dart) -->
+                    <div class="ux-panel p1">
+                      <div class="bf-home">
+                        <div class="bf-topbar">
+                          <span class="bf-brand">Brick Fund</span>
+                          <span class="ico-search"></span>
+                        </div>
+                        <div class="bf-chips">
+                          <span class="bf-chip active">All</span>
+                          <span class="bf-chip">Distribution</span>
+                          <span class="bf-chip">Restock</span>
+                        </div>
+                        <div class="bf-card">
+                          <div class="bf-card-img"></div>
+                          <div class="bf-card-body">
+                            <span class="bf-outlet">Amina Foods</span>
+                            <span class="bf-info">FMCG opportunity · 3rd listing</span>
+                            <div class="bf-progress"><i style="--w:62%"></i></div>
+                            <div class="bf-progrow"><span>₦620,000 raised</span><b>62%</b></div>
+                            <div class="bf-stats">
+                              <div class="bf-stat"><span>Purchase target</span><b>₦1,000,000</b></div>
+                              <div class="bf-stat"><span>Projected return</span><b>18% Margin</b></div>
+                              <div class="bf-stat"><span>Expected duration</span><b>3 Cycles</b></div>
+                            </div>
+                            <span class="bf-backers">24 backers</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Screen 2 — Offer detail (detail_page.dart) -->
+                    <div class="ux-panel p2">
+                      <div class="bf-detail">
+                        <div class="bf-hero"></div>
+                        <p class="bf-detail-info">FMCG opportunity funding · 24 backers already in</p>
+                        <div class="bf-metrics">
+                          <div class="bf-mrow"><span>Projected return:</span><b>18% Margin</b></div>
+                          <div class="bf-mrow"><span>Expected duration:</span><b>3 Cycles</b></div>
+                          <div class="bf-mrow"><span>Purchase target:</span><b>₦1,000,000</b></div>
+                          <div class="bf-mrow"><span>Raised amount:</span><b>₦620,000</b></div>
+                          <div class="bf-progress"><i style="--w:62%"></i></div>
+                          <span class="bf-funded">62% funded</span>
+                        </div>
+                        <div class="bf-cta">Fund It Now</div>
+                        <div class="bf-cta-outline">Add to Watchlist</div>
+                      </div>
+                    </div>
+
+                    <!-- Screen 3 — Supply Cycles (supply_page.dart) -->
+                    <div class="ux-panel p3">
+                      <div class="bf-supply">
+                        <div class="bf-supply-top">
+                          <span class="bf-supply-title">Supply Cycles</span>
+                          <div class="bf-tabs">
+                            <span class="bf-tab active">All <b>12</b></span>
+                            <span class="bf-tab">Active <b class="blue">5</b></span>
+                            <span class="bf-tab">Pending <b class="warn">2</b></span>
+                          </div>
+                        </div>
+                        <div class="bf-metrics-row">
+                          <div class="bf-mcard warn"><span>Pending Payouts</span><b>₦84,000</b></div>
+                          <div class="bf-mcard"><span>Month's Gain</span><b>₦142,000</b></div>
+                          <div class="bf-mcard blue"><span>Active Cycles</span><b>5</b></div>
+                        </div>
+                        <div class="bf-template">
+                          <div class="bf-template-top">
+                            <span class="bf-template-icon">↻</span>
+                            <div>
+                              <span class="bf-template-name">Distribution Cycle</span>
+                              <div class="bf-template-chips"><span>5 cycles</span><span class="blue">3 active</span><span class="warn">1 pending</span></div>
+                              <div class="bf-amounts"><span>Funded: <b>₦2.1m</b></span><span>Repay: <b>₦2.4m</b></span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="ux-dots"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Adding a future product later: drop in one more .pd-item on the
+                 left with a matching data-target, and one more .shot.ux-shot
+                 here with the same data-visual value. The accordion + JS below
+                 already handle any number of items — no other changes needed. -->
+
           </div>
         </div>
       </div>
@@ -852,6 +904,29 @@
     setTimeout(function(){ toast && toast.classList.add('in'); }, reduced ? 0 : 950);
   }
   setTimeout(run, 350);
+})();
+
+/* ── Products accordion: one open at a time, visual follows selection ── */
+(function(){
+  var items = document.querySelectorAll('.pd-item');
+  var panels = document.querySelectorAll('.pd-visual .shot.ux-shot');
+  if(!items.length) return;
+  items.forEach(function(item){
+    var head = item.querySelector('.pd-item-head');
+    var toggle = item.querySelector('.pd-toggle');
+    head.addEventListener('click', function(){
+      items.forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.pd-toggle').textContent = '+';
+      });
+      item.classList.add('open');
+      toggle.textContent = '−';
+      var target = item.dataset.target;
+      panels.forEach(function(p){
+        p.classList.toggle('active', p.dataset.visual === target);
+      });
+    });
+  });
 })();
 
 /* ── Signature ecosystem: rail fills, nodes light up in sequence ── */
