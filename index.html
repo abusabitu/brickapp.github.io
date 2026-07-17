@@ -107,7 +107,7 @@
   .eco .eyebrow{color:var(--green-soft)}
   .eco h2{max-width:15ch;margin-bottom:16px}
   .eco .lead{color:#aab2ac}
-  .eco-stage{margin-top:64px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:stretch;position:relative}
+  .eco-stage{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch;position:relative}
   .eco-rail{position:absolute;top:50%;left:6%;right:6%;height:2px;background:rgba(255,255,255,.1);z-index:0}
   .eco-rail .fill{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--green),#3fd089);transition:width 1.4s var(--ease)}
   .eco.go .eco-rail .fill{width:100%}
@@ -163,7 +163,7 @@
   .closer{text-align:center}
   .closer h2{margin-bottom:18px}
   .closer .lead{margin:0 auto 52px}
-  .app-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:940px;margin:0 auto;text-align:left}
+  .app-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:720px;margin:0 auto;text-align:left}
   .app-card{border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;display:flex;flex-direction:column;background:var(--paper);transition:border-color .2s,transform .2s var(--ease),box-shadow .2s}
   .app-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,21,18,.08)}
   .app-card.soon{background:var(--mist);border-style:dashed}
@@ -267,9 +267,8 @@
         <div class="eco-stage" id="eco-stage">
           <div class="eco-rail"><div class="fill"></div></div>
           <div class="eco-node"><div class="dot"></div><h4>Supplier</h4><p>Verified suppliers post what they've got.</p></div>
-          <div class="eco-node"><div class="dot"></div><h4>Brick Market</h4><p>You order the stock you need.</p></div>
-          <div class="eco-node"><div class="dot"></div><h4>Brick One</h4><p>You run sales, stock, and finance.</p></div>
-          <div class="eco-node"><div class="dot"></div><h4>Brick Fund</h4><p>Capital turns demand into stock.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Brick One</h4><p>You source, sell, and run everything — market included.</p></div>
+          <div class="eco-node"><div class="dot"></div><h4>Brick Fund</h4><p>Funders finance the inventory outlets need.</p></div>
           <div class="eco-node"><div class="dot"></div><h4>Growth</h4><p>You're always ready to sell more.</p></div>
         </div>
       </div>
@@ -279,34 +278,22 @@
     <section id="products">
       <div class="wrap chapter reveal">
         <div class="copy">
-          <span class="tag">Brick Market</span>
-          <h3 class="h-md">Source it all.</h3>
-          <p>Buy from verified suppliers in one place. See what's available, what it costs, and how fast it ships — no phone tag, no guesswork.</p>
-          <ul><li>Verified suppliers</li><li>Clear pricing</li><li>Bulk ordering</li><li>Delivery timelines</li></ul>
-        </div>
-        <div class="shot"><img src="images/market_shot.jpg" alt="Brick Market" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick Market</div>'"></div>
-      </div>
-    </section>
-
-    <section class="snug">
-      <div class="wrap chapter flip reveal">
-        <div class="copy">
           <span class="tag">Brick One</span>
-          <h3 class="h-md">Run your day.</h3>
-          <p>Your business, in one app — procurement, live inventory, point of sale, and finance, whether you're behind a counter, a kitchen, or a production line. Works offline, so it keeps going when your network doesn't.</p>
-          <ul><li>Inventory</li><li>Point of sale</li><li>Procurement</li><li>Finance</li><li>Reporting</li></ul>
+          <h3 class="h-md">Source it, run it — all in one app.</h3>
+          <p>Order from verified suppliers right inside Brick One, then manage that stock through sales, inventory, and finance. No separate marketplace app, no phone tag — just one place for your whole day, online or off.</p>
+          <ul><li>Verified suppliers</li><li>Clear pricing</li><li>Inventory</li><li>Point of sale</li><li>Finance</li><li>Reporting</li></ul>
         </div>
         <div class="shot"><img src="images/brickone_shot.jpg" alt="Brick One" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick One</div>'"></div>
       </div>
     </section>
 
     <section class="snug">
-      <div class="wrap chapter reveal">
+      <div class="wrap chapter flip reveal">
         <div class="copy">
           <span class="tag">Brick Fund</span>
-          <h3 class="h-md">Fund your growth.</h3>
-          <p>Get the capital to stock up when you need it. Funders back the supplies you need and watch their support turn into real, working stock — transparent and tracked every step.</p>
-          <ul><li>Inventory financing</li><li>Supplier financing</li><li>Clear returns</li><li>Full tracking</li></ul>
+          <h3 class="h-md">Fund inventory. Back real businesses.</h3>
+          <p>Sign up as a funder and finance inventory for outlets and businesses on Brick. Choose what to fund, follow it as real stock moves and sells, and get transparent, tracked returns every step of the way.</p>
+          <ul><li>Fund outlets</li><li>Finance inventory</li><li>Track in real time</li><li>Transparent returns</li></ul>
         </div>
         <div class="shot"><img src="images/brickfund_shot.jpg" alt="Brick Fund" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;>Brick Fund</div>'"></div>
       </div>
@@ -321,9 +308,9 @@
         </div>
         <div class="grid reveal">
           <div class="oc"><h3>Never run out.</h3><p>Live stock that updates with every sale and tells you what to reorder.</p></div>
-          <div class="oc"><h3>Skip the phone calls.</h3><p>One marketplace of verified supply, with prices you can compare.</p></div>
-          <div class="oc"><h3>Grow beyond your cash.</h3><p>Funding that turns demand into working stock, not paperwork.</p></div>
-          <div class="oc"><h3>See it all in one place.</h3><p>Your sales, stock, and funding connected — no switching between tools.</p></div>
+          <div class="oc"><h3>Skip the phone calls.</h3><p>A built-in marketplace of verified supply, with prices you can compare.</p></div>
+          <div class="oc"><h3>Grow beyond your cash.</h3><p>Funders on Brick Fund turn demand into working stock, not paperwork.</p></div>
+          <div class="oc"><h3>See it all in one place.</h3><p>Your sourcing, sales, stock, and funding connected — no switching between tools.</p></div>
         </div>
       </div>
     </section>
@@ -337,8 +324,8 @@
         </div>
         <div class="steps reveal">
           <div class="step"><span class="n">01</span><h4>Set up your business</h4><p>Add your business, pick your categories, and go live in minutes.</p></div>
-          <div class="step"><span class="n">02</span><h4>Stock and sell</h4><p>Source through Market, run it in Brick One, sell from day one.</p></div>
-          <div class="step"><span class="n">03</span><h4>Grow with funding</h4><p>Tap Brick Fund when you're ready to scale beyond your cash.</p></div>
+          <div class="step"><span class="n">02</span><h4>Stock and sell</h4><p>Source through Brick One's built-in marketplace, then run sales from day one.</p></div>
+          <div class="step"><span class="n">03</span><h4>Grow with funding</h4><p>Get inventory financed by funders on Brick Fund when you're ready to scale beyond your cash.</p></div>
         </div>
       </div>
     </section>
@@ -357,12 +344,12 @@
   <section class="closer" id="download">
     <div class="wrap">
       <h2 class="h-lg">Ready when you are.</h2>
-      <p class="lead">Each app handles one part of your business. Get the ones you need — Market is on the way.</p>
+      <p class="lead">Two apps cover your whole business — sourcing, running your day, and funding your growth.</p>
       <div class="app-cards">
 
         <div class="app-card">
           <div class="app-name">Brick One</div>
-          <p class="app-line">Run your day — inventory, sales, and finance.</p>
+          <p class="app-line">Run your day — sourcing, inventory, sales, and finance, all in one app.</p>
           <div class="stores">
             <a href="https://play.google.com/store/apps/details?id=ng.com.brickapp"><img src="images/google-play-badge.png" alt="Get Brick One on Google Play"></a>
             <a href="#"><img src="images/app-store-badge.png" alt="Download Brick One on the App Store"></a>
@@ -371,17 +358,11 @@
 
         <div class="app-card">
           <div class="app-name">Brick Fund</div>
-          <p class="app-line">Fund your growth when you're ready to scale.</p>
+          <p class="app-line">Sign up to fund and finance inventory for outlets and businesses.</p>
           <div class="stores">
             <a href="#"><img src="images/google-play-badge.png" alt="Get Brick Fund on Google Play"></a>
             <a href="#"><img src="images/app-store-badge.png" alt="Download Brick Fund on the App Store"></a>
           </div>
-        </div>
-
-        <div class="app-card soon">
-          <div class="app-name">Brick Market</div>
-          <p class="app-line">Source everything from verified suppliers.</p>
-          <span class="soon-pill">Coming soon</span>
         </div>
 
       </div>
